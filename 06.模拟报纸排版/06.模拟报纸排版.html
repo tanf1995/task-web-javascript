@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务六， 模拟报纸</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #00A1F5;
+        }
+
+        .main{
+            background-color: #fff;
+            width: 892px;
+            height: 1386px;
+            padding: 0 44px 0;
+        }
+
+        header{
+            height: 61px;
+            border-bottom: 2px solid #938e8c;
+            font-family: SimHei;
+            position: relative;
+        }
+
+        header .logo{
+            width: 110px;
+            height: 61px;
+            background-color: #d45d5c;
+            color: #fff;
+            font-size: 12px;
+            /*文字底部对齐*/
+            display: table-cell;
+            vertical-align: bottom;
+        }
+
+        header p{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            font-size: 12px;
+            color: #d45d5c;
+        }
+
+        .show{
+            margin-top: 34px;
+            position: relative;
+            font-family: "Microsoft YaHei";
+        }
+
+        .show .show_info, .show img, .show .green_outer, .show .red_outer{
+            position: absolute;
+        }
+
+        .show .green_outer{
+            width: 191px;
+            height: 301px;
+            background-color: #28513f;
+            opacity: 0.6;
+        }
+
+        .show .red_outer{
+            width: 191px;
+            height: 301px;
+            left: 450px;
+            opacity: 0.6;
+            background-color: #e4b7b6;
+        }
+
+        .show .show_info{
+            width: 203px;
+            right: 0;
+            border-top: 2px solid #cc8091;
+        }
+
+        .show .show_info .about:first-letter{
+            font-size: 30px;
+        }
+
+        .show .show_info .about{
+            font-size: 24px;
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+        .show .show_info .about:first-child{
+            width: 4em;
+        }
+
+        .show .show_info .about:nth-child(2){
+            width: 7em;
+        }
+
+        .show_info .small{
+            font-size: 12px;
+            color: #676767;
+            font-family: '楷体';
+        }
+
+        .show_info .big_info{
+            margin-top: 0;
+        }
+
+        .big_info .big_it{
+            font-size: 116px;
+            font-style: oblique;
+            color: #75b86b;
+        }
+
+        .big_info .inner_info div{
+            display: inline-block;
+            margin-top: -20px;
+        }
+
+        .big_info .inner_info1 p{
+            font-size: 55px;
+            color: #cc8091;
+        }
+
+        .big_info .inner_info2 p:nth-child(1){
+            font-size: 21px;
+            color: #cc8091;
+        }
+
+        .big_info .inner_info2 p:nth-child(2){
+            font-size: 12px;
+            color: #cc8091;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <p>2016.03</p>
+            <div class="logo" style="text-indent: 1em">ife.baidu.com</div>
+        </header>
+
+        <div class="show">
+            <img src="images/pic1.jpg">
+            <div class="green_outer"></div>
+            <div class="red_outer"></div>
+
+            <div class="show_info">
+                <div>
+                    <p class="about">ABOUT</p>
+                    <p class="about">TECHNOLOGE</p>
+                    <p class="small">about technologe about technologe about technologe</p>
+                </div>
+                <div class="big_info">
+                    <p class="big_it">700</p>
+                    <div class="inner_info">
+                        <div class="inner_info1">
+                            <P>3.2</P>
+                        </div>
+                        <div class="inner_info2">
+                            <p>css</p>
+                            <p>csscsscsscsscsscss</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

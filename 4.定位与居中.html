@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务四，定位</title>
+</head>
+<style>
+    .box{
+        width: 400px;
+        height: 200px;
+        background-color: #ccc;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -200px;
+        overflow: hidden;
+    }
+
+    .inner_box1{
+        width: 100px;
+        height: 100px;
+        background-color: #fc0;
+        border-radius: 50%;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+    }
+
+    .inner_box2{
+        width: 100px;
+        height: 100px;
+        background-color: #fc0;
+        border-radius: 50%;
+        position: absolute;
+        top: 150px;
+        left: 350px;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="inner_box1"></div>
+        <div class="inner_box2"></div>
+    </div>
+</body>
+</html>

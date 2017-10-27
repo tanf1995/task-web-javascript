@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务三，三栏式布局</title>
+    <style>
+        .main{
+            margin: 20px;
+            padding: 20px;
+            background-color: #eee;
+            position: relative;
+        }
+        
+        ul li{
+            list-style: none;
+        }
+
+        .team_name, .team_content, .team_logo{
+            background-color: #fff;
+            position: absolute;
+        }
+
+        .team_name{
+            width: 160px;
+            height: 80px;
+            padding: 20px;
+        }
+
+        .team_name p{
+            position: absolute;
+            top: 0;
+            left: 120px;
+        }
+
+        .team_logo{
+            width: 120px;
+            height: 420px;
+            right: 20px;
+        }
+
+        .team_logo ul{
+            margin-left: -20px;
+        }
+
+        .team_logo ul li{
+            margin-bottom: 20px;
+        }
+
+        .team_content{
+            left: 240px;
+            right: 160px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="team_name">
+            <img src="images/huoying.jpg">
+            <p>火影忍者</p>
+        </div>
+
+        <div class="team_content">
+            <p>故事成功地将原本隐藏在黑暗中，用世界上最强大的毅力和最艰辛的努力去
+                做最密不可宣和隐讳残酷的事情的忍者，描绘成了太阳下最值得骄傲最
+                光明无限的职业。在岸本齐史笔下的忍者世界中，每一位年轻的忍者都
+                在开拓着属于自己的忍道。</p>
+            <p>为实现梦想，和守护伙伴们的羁绊，鸣人不断修炼，作为木叶“三忍”
+                之一自来也的弟子，在追寻梦想的过程中不断突破自我，贯彻了自身的忍道，
+                得到了包括九喇嘛与佐助在内的所有人的认可，成为完美人柱力，
+                最后与包括九尾在内的伙伴们一同终结了战争，为忍者世界带来和平，
+                并实现自己成为火影和忍界英雄的梦想。</p>
+            <p>第四次忍界大战中因带土死前通过查克拉将双眼再次赠予而能短暂使用出完整
+                的写轮眼力量（包括使出完全体须佐能乎），并借此在最终决战与第七班三位
+                弟子一起将大筒木辉夜封印。战争结束后成为了木叶第六代目火影
+                ，数年后退休，由鸣人接任，和迈特凯两人启程旅行，去寻找曾经的回忆。</p>
+        </div>
+
+        <div class="team_logo">
+            <ul>
+                <li><img src="images/kakaxi.jpg"></li>
+                <li><img src="images/mingren.jpeg"></li>
+                <li><img src="images/zuozhu.jpg"></li>
+                <li><img src="images/xiaoying.jpg"></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var content = document.getElementsByClassName('team_content')[0];
+            var logo = document.getElementsByClassName('team_logo')[0];
+            var main_box = document.getElementsByClassName('main')[0];
+            var max_height = content.clientHeight > logo.clientHeight?content.clientHeight:logo.clientHeight;
+            main_box.style.height = max_height + 'px';
+        };
+        window.onresize = function () {
+            var content = document.getElementsByClassName('team_content')[0];
+            var logo = document.getElementsByClassName('team_logo')[0];
+            var main_box = document.getElementsByClassName('main')[0];
+            var max_height = content.clientHeight > logo.clientHeight?content.clientHeight:logo.clientHeight;
+            main_box.style.height = max_height + 'px';
+        };
+    </script>
+</body>
+</html>
