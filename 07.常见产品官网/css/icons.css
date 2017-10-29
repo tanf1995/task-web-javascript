@@ -1,0 +1,54 @@
+.icon{
+    background-image: url("../images/icons.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.icon_logo{
+    background-position-y: 0;
+}
+
+.icon_login{
+    background-position-y: -34px;
+}
+
+.icon_show1{
+    background-position-y: -100px;
+}
+
+.icon_show2{
+    background-position-y: -150px;
+}
+
+.icon_show3{
+    background-position-y: -200px;
+}
+
+.icon_show4{
+    background-position-y: -250px;
+}
+
+.icon_mid1{
+    background-position-y: -300px;
+}
+
+.icon_mid2{
+    background-position-y: -395px;
+    background-position-x: 205px;
+}
+
+.icon_footer1{
+    background-position-y: -450px;
+}
+
+.icon_footer2{
+    background-position-y: -500px;
+}
+
+.icon_footer3{
+    background-position-y: -550px;
+}
+
+.icon_footer4{
+    background-position-y: -600px;
+}
