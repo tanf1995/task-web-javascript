@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务八，响应式布局</title>
+</head>
+<!--响应式布局-->
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .main{
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .row [class*="col-"]{
+        float: left;
+        height: 70px;
+    }
+
+    .row [class*="col-"] .inner{
+        margin: 10px;
+        height: 48px;
+        border: 1px solid #999;
+        background-color: #eee;
+        text-align: center;
+        line-height: 48px;
+    }
+
+    .row{
+        clear: both;
+        margin: 10px;
+    }
+
+    @media screen and (min-width: 768px){
+        .col-md-1{
+            width: 8.3%;
+            font-size: 10%;
+        }
+        .col-md-2{
+            width: 16.7%;
+            font-size: 10%;
+        }
+        .col-md-3{
+            width: 25%;
+        }
+        .col-md-4{
+            width: 33.3%;
+        }
+        .col-md-5{
+            width: 41.6%;
+        }
+        .col-md-6{
+            width: 50%;
+        }
+        .col-md-7{
+            width: 58.3%;
+        }
+        .col-md-8{
+            width: 66.6%;
+        }
+        .col-md-9{
+            width: 75%;
+        }
+        .col-md-10{
+            width: 83.3%;
+        }
+        .col-md-11{
+            width: 91.6%;
+        }
+        .col-md-12{
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .col-sm-1{
+            width: 8.3%;
+            font-size: 10%;
+        }
+        .col-sm-2{
+            width: 16.7%;
+            font-size: 10%;
+        }
+        .col-sm-3{
+            width: 25%;
+        }
+        .col-sm-4{
+            width: 33.3%;
+        }
+        .col-sm-5{
+            width: 41.6%;
+        }
+        .col-sm-6{
+            width: 50%;
+        }
+        .col-sm-7{
+            width: 58.3%;
+        }
+        .col-sm-8{
+            width: 66.6%;
+        }
+        .col-sm-9{
+            width: 75%;
+        }
+        .col-sm-10{
+            width: 83.3%;
+        }
+        .col-sm-11{
+            width: 91.6%;
+        }
+        .col-sm-12{
+            width: 100%;
+        }
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="row">
+            <div class="col-md-4 col-sm-6"><div class="inner">A:md4 sm6</div></div>
+            <div class="col-md-4 col-sm-6"><div class="inner">B:md4 sm6</div></div>
+            <div class="col-md-4 col-sm-12"><div class="inner">C:md4 sm12</div></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 col-sm-3"><div class="inner">D:md3 sm3</div></div>
+            <div class="col-md-6 col-sm-6"><div class="inner">E:md6 sm6</div></div>
+            <div class="col-md-3 col-sm-3"><div class="inner">F:md3 sm3</div></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-sm-2"><div class="inner">G:md1 sm2</div></div>
+            <div class="col-md-1 col-sm-2"><div class="inner">H:md1 sm2</div></div>
+            <div class="col-md-2 col-sm-8"><div class="inner">I:md2 sm8</div></div>
+            <div class="col-md-2 col-sm-3"><div class="inner">J:md2 sm3</div></div>
+            <div class="col-md-6 col-sm-3"><div class="inner">K:md6 sm3</div></div>
+        </div>
+    </div>
+</body>
+</html>

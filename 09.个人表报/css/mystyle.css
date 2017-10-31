@@ -1,0 +1,804 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.main{
+    width: 100%;
+    height: 1270px;
+}
+
+/*顶栏*/
+header{
+    width: 100%;
+    height: 58px;
+    background-color: #2189bf;
+    color: #fff;
+    position: relative;
+}
+
+header .logo{
+    width: 40px;
+    height: 40px;
+    margin-left: 50px;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+header .search{
+    width: 317px;
+    height: 30px;
+    position: absolute;
+    top: 14px;
+    right: 170px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+header .search input{
+    width: 250px;
+    margin-top: 5px;
+    margin-left: 45px;
+    border: none;
+    outline: none;
+}
+
+header .search a{
+    display: block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+}
+
+header .login{
+    width: 50px;
+    height: 20px;
+    margin-right: 50px;
+    position: absolute;
+    top: 19px;
+    right: 50px;
+}
+
+header .login a{
+    width: 50px;
+    height: 20px;
+    text-indent: 2em;
+    display: block;
+    font-size: 12px;
+    line-height: 20px;
+    font-family: SimHei;
+    color: #fff;
+}
+
+/*侧栏*/
+aside{
+    width: 260px;
+    height: 1212px;
+    background-color: #2a2e3d;
+    float: left;
+    overflow: hidden;
+}
+
+aside .user_info{
+    width: 100%;
+    height: 150px;
+    position: relative;
+    font-family: SimHei;
+}
+
+aside .user_info .pic{
+    width: 63px;
+    height: 63px;
+    position: absolute;
+    top: 16px;
+    left: 44px;
+    border: 2px solid #e7504e;
+    border-radius: 50%;
+}
+
+aside .user_info .pic div{
+    margin: 2px;
+    height: 59px;
+    border-radius: 50%;
+    background-color: #e7504e;
+}
+
+aside .user_info .name{
+    font-size: 16px;
+    color: #6e8095;
+    position: absolute;
+    top: 40px;
+    left: 120px;
+}
+
+aside .user_info .name:hover{
+    color: #fff;
+}
+
+aside .user_info .collect{
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    font-size: 12px;
+    color: #6e8095;
+    font-family: 宋体;
+}
+
+aside .user_info .fans{
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    font-size: 12px;
+    color: #6e8095;
+    font-family: 宋体;
+}
+
+aside a{
+    font-size: 16px;
+    font-family: SimHei;
+    color: #6e8095;
+}
+
+aside a:hover{
+    color: #fff;
+}
+
+aside .menu{
+    font-family: SimHei;
+}
+
+aside .menu li a, aside .files li a{
+    font-size: 12px;
+    padding-left: 22px;
+}
+
+aside .menu li{
+    padding: 17px 0;
+    padding-left: 44px;
+}
+
+aside .menu .active{
+    background-color: #383d4e;
+}
+
+aside .menu .active > a{
+    color: #fff;
+}
+
+aside .files{
+    margin-left: -20px;
+    display: none;
+}
+
+aside .files li{
+    padding-top: 11px;
+    padding-bottom: 0;
+}
+
+aside .files li a{
+    padding-left: 32px;
+}
+
+aside .inner{
+    margin-left: -25px;
+    display: none;
+}
+
+aside .inner li{
+    padding-top: 11px;
+    padding-bottom: 0;
+}
+
+aside .inner li a{
+    padding-left: 20px;
+}
+
+/*主要部分*/
+.body{
+    height: 1212px;
+    margin-left: 260px;
+    font-family: SimHei;
+    background-color: #ededec;
+}
+
+.body .nav{
+    height: 30px;
+    padding-left: 30px;
+    background-color: #fff;
+}
+
+.body .nav a{
+    line-height: 30px;
+    font-size: 12.3px;
+    color: #aaaaaa;
+}
+
+.body .nav a:last-child{
+    color: #6898c2;
+}
+
+.body .content{
+    width: 890px;
+    margin: 20px auto 0;
+    height: 1010px;
+    background-color: #ededec;
+}
+
+.body .content [class*='spart']{
+    box-shadow: 0 0 2px #000;
+}
+
+.body .content .spart1{
+    width: 100%;
+    height: 85px;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+.body .content .spart1 .inner1{
+    width: 158px;
+    float: left;
+    margin-left: 30px;
+    position: relative;
+}
+
+.body .content .spart1 .inner2{
+    width: 220px;
+    float: left;
+    position: relative;
+}
+
+.body .content .spart1 .inner3{
+    float: left;
+    position: relative;
+}
+
+.content .spart1 label{
+    color: #aaa;
+}
+
+.content .spart1 select{
+    color: #323333;
+    margin-top: 12px;
+}
+
+.content .spart1 .inner1 select{
+    margin-left: 16px;
+    width: 70px;
+    height: 24px;
+}
+
+.content .spart1 .inner2 select{
+    width: 122px;
+    height: 24px;
+}
+
+.content .spart1 .inner3 .time{
+    width: 124px;
+    margin-right: 20px;
+}
+
+.content .spart1 .inner3 .people_num{
+    width: 74px;
+    margin-right: 20px;
+}
+
+.content .spart1 .inner3 .days{
+    width: 70px;
+}
+
+.content .spart1 .inner3 .success_num{
+    width: 122px;
+}
+
+.content .spart1 .inner3 .btn{
+    width: 52px;
+    height: 25px;
+    background-color: #388ac1;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+    bottom: 14px;
+}
+
+.content .part2{
+    height: 67px;
+    margin-top: 10px;
+    font-family: 微软雅黑;
+    /*overflow: hidden;*/
+}
+
+.content .part2 div{
+    height: 64px;
+    background-color: #fff;
+    margin-right: 6px;
+    margin-top: 3px;
+    float: left;
+}
+
+.content .part2 .spart_inner1{
+    width: 30px;
+    position: relative;
+    z-index: 1000;
+}
+
+.content .part2 .spart_inner2{
+    width: 112px;
+    position: relative;
+    z-index: 100;
+}
+
+.content .part2 .spart_inner3{
+    width: 110px;
+    margin-right: 0;
+}
+
+.content .part2 .spart_inner1 a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.content .part2 .spart_inner3 a{
+    height: 64px;
+    line-height: 64px;
+    display: block;
+    padding-left: 55px;
+    font-size: 12px;
+    color: #535353;
+    overflow: hidden;
+}
+
+.content .part2 .spart_inner2 p{
+    text-align: center;
+    color: #323333;
+    line-height: 40px;
+}
+
+.content .part2 .spart_inner2 p:last-child{
+    font-size: 21px;
+    color: #ec6500;
+    line-height: 18px;
+}
+
+.content .part2 .spart_inner2 p:last-child span{
+    font-size: 18px;
+    color: #aaa;
+}
+
+.content .part2 .active{
+    border-top: 3px solid #669ed2;
+    margin-top: 0;
+}
+
+.content .part3{
+    margin-top: 20px;
+    width: 100%;
+    height: 90px;
+}
+
+.content .part3 .spart3_inner1, .content .part3 .spart3_inner2, .content .part3 .spart3_inner3, .content .part3 .spart3_inner4{
+    width: 198px;
+    height: 70px;
+    border-left: 4px solid;
+    float: left;
+    background-color: #fff;
+    margin-top: 10px;
+    margin-right: 27px;
+    position: relative;
+}
+
+.content .part3 .spart3_inner4{
+    margin-right: 0;
+}
+
+.content .part3 h2{
+    font-size: 12px;
+    color: #323333;
+}
+
+.content .part3 p{
+    margin: 15px 20px;
+    font-size: 12px;
+    line-height: 25px;
+    color: #323333;
+}
+
+.content .part3 .box{
+    width: 60px;
+    height: 48px;
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    background-color: black;
+}
+
+.content .part3 .spart3_inner1{
+    border-color: #43b29e;
+}
+
+.content .part3 .spart3_inner1 .box{
+    background-color: #43b29e;
+}
+
+.content .part3 .spart3_inner2{
+    border-color: #388ac1;
+}
+
+.content .part3 .spart3_inner2 .box{
+    background-color: #388ac1;
+}
+
+.content .part3 .spart3_inner3{
+    border-color: #d04b36;
+}
+
+.content .part3 .spart3_inner3 .box{
+    background-color: #d04b36;
+}
+
+.content .part3 .spart3_inner4{
+    border-color: #e2cd47;
+}
+
+.content .part3 .spart3_inner4 .box{
+    background-color: #e2cd47;
+}
+
+.content .part4{
+    width: 100%;
+    height: 360px;
+    margin-top: 18px;
+    font-family: 微软雅黑;
+}
+
+.content .part4 .spart4_left{
+    width: 530px;
+    height: 360px;
+    float: left;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.content .part4 .spart4_right{
+    margin-left: 10px;
+    width: 350px;
+    height: 360px;
+    float: left;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.content .inner_nav{
+    width: 100%;
+    height: 40px;
+    background-color: #f4f6f7;
+}
+
+.content .inner_nav h2{
+    font-size: 12px;
+    color: #aaa;
+    line-height: 40px;
+    text-indent: 2em;
+}
+
+.content .part4 .spart4_left .cards{
+    width: 490px;
+    height: 280px;
+    margin: 20px auto 0;
+}
+
+.content .part4 .choices{
+    height: 30px;
+}
+
+.content .part4 .choices div{
+    float: left;
+    height: 28px;
+    border-bottom: 1px solid #000;
+}
+
+.content .part4 .choices div:last-child{
+    width: 28px;
+    border-bottom: 1px solid #000;
+}
+
+.content .part4 .choices .choice{
+    width: 84px;
+    font-size: 12px;
+    line-height: 28px;
+    text-align: center;
+    color: #535353;
+    background-color: #ededf0;
+    cursor: pointer;
+}
+
+.content .part4 .choices .now{
+    border: 1px solid #000;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.content .part4 .choices .interval{
+    width: 10px;
+}
+
+.content .part4 .cards_content{
+    width: 489px;
+    height: 250px;
+    border: 1px solid #000;
+    border-top: none;
+    margin-top: -2px;
+    overflow: hidden;
+}
+
+.content .part4 .cards_content table{
+    width: 404px;
+    height: 190px;
+    margin: 25px auto 0;
+    border-top: 1px solid #d8d9d9;
+    border-left: 1px solid #d8d9d9;
+    font-family: 宋体;
+    font-size: 12px;
+    color: #535353;
+}
+
+.content .part4 .cards_content table td{
+    border-right: 1px solid #d8d9d9;
+    border-bottom: 1px solid #d8d9d9;
+    text-align: center;
+}
+
+.content .part4 .cards_content table .active{
+    background-color: #ededf0;
+}
+
+.content .part4 .spart4_right .content{
+    margin: 20px 35px 0 35px;
+    width: 280px;
+    height: 262px;
+    background-color: #fff;
+}
+
+.content .part4 .spart4_right .content p{
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+    line-height: 30px;
+    color: #535353;
+    text-indent: 2em;
+}
+
+.content .part4 .spart4_right .content span{
+    color: #c3c2c2;
+    font-size: 12px;
+    padding-left: 2em;
+}
+
+.content .part4 .spart4_right .content .inner1, .content .part4 .spart4_right .content .inner2{
+    width: 140px;
+    display: inline-block;
+}
+
+.content .part4 .spart4_right .content .inner2{
+    margin-left: -1em;
+    border-left: 1px solid #eee;
+}
+
+.content .part4 .spart4_right .content .detail{
+    height: 10em;
+}
+
+.content .part4 .spart4_right .content input:last-child{
+    position: relative;
+    left: 132px;
+    cursor: pointer;
+    width: 52px;
+    height: 28px;
+    background-color: #388ac1;
+    font-size: 12px;
+    color: #fff;
+    border: none;
+}
+
+.content .part5{
+    width: 100%;
+    height: 356px;
+    margin-top: 10px;
+}
+
+.content .part5 .spart5_left{
+    width: 350px;
+    height: 356px;
+    float: left;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.content .part5 .spart5_right{
+    width: 530px;
+    height: 356px;
+    margin-left: 10px;
+    float: left;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.content .part5 .calendar{
+    width: 310px;
+    height: 284px;
+    margin-left: 20px;
+}
+
+.content .part5 .calendar #month{
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.content .part5 .calendar input{
+    background-color: #fff;
+    border: 1px solid #AAAAAA;
+    outline: none;
+    height: 24px;
+    margin: 10px 0;
+}
+
+.content .part5 .calendar select{
+    height: 24px;
+    font-size: 12px;
+    line-height: 24px;
+    color: #535353;
+    margin: 10px 0;
+}
+
+.content .part5 .calendar table{
+    font-size: 11.4px;
+    color: #323333;
+    border-collapse:collapse;  /* 合并单元格后可设置行边框线*/
+    font-weight: bold;
+}
+
+.content .part5 .calendar table td{
+    width: 43px;
+    height: 40px;
+    text-align: center;
+}
+
+.content .part5 .calendar table tr:nth-child(1){
+    border-top: 2px solid #d9eaf7;
+    border-bottom: 2px solid #e1e1e2;
+    font-size: 12px;
+    color: #535353;
+}
+
+.content .part5 .calendar table .festival p{
+    color: #c9161d;
+}
+
+.content .part5 .calendar table .weekends span{
+    color: #c9161d;
+}
+
+.content .part5 .spart5_right .spart5_inner{
+    width: 452px;
+    height: 280px;
+    margin: 18px auto 0;
+    font-size: 12px;
+    color: #323333;
+    text-align: center;
+    border-collapse:collapse;
+}
+
+.content .part5 .spart5_right .spart5_inner td{
+    border-top: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+}
+
+.content .part5 .spart5_right .spart5_inner tr{
+    cursor: pointer;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:hover{
+    background-color: #f4f6f7;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:first-child{
+    font-size: 13px;
+    color: #231815;
+    font-weight: bold;
+}
+
+.content .part5 .spart5_right .spart5_inner tr td:nth-child(1){
+    width: 70px;
+}
+
+.content .part5 .spart5_right .spart5_inner tr td:nth-child(2){
+    width: 90px;
+}
+
+.content .part5 .spart5_right .spart5_inner tr td:nth-child(3){
+    width: 290px;
+    border-right: none;
+}
+
+.content .part5 .spart5_right .spart5_inner tr td p{
+    display: inline-block;
+    width: 168px;
+    height: 6px;
+    background-color: #dcdcdc;
+    margin-left: 10px;
+    position: relative;
+}
+
+.content .part5 .spart5_right .spart5_inner .interval{
+    background-color: #fff;
+}
+
+.content .part5 .spart5_right .spart5_inner tr td p span{
+    position: absolute;
+    left: 0;
+    height: 6px;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(2) span{
+    width: 80%;
+    background-color: #ed6e52;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(3) span{
+    width: 75%;
+    background-color: #ef804f;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(4) span{
+    width: 70%;
+    background-color: #f19f4f;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(5) span{
+    width: 65%;
+    background-color: #9fd8f4;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(6) span{
+    width: 60%;
+    background-color: #87cef1;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(7) span{
+    width: 55%;
+    background-color: #86cdf1;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(8) span{
+    width: 50%;
+    background-color: #7ecaf0;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(9) span{
+    width: 45%;
+    background-color: #7ecaef;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(10) span{
+    width: 40%;
+    background-color: #7fcbf0;
+}
+
+.content .part5 .spart5_right .spart5_inner tr:nth-child(11) span{
+    width: 35%;
+    background-color: #7fcaf0;
+}

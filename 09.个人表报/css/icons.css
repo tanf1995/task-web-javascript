@@ -1,0 +1,73 @@
+.icon{
+    background-image: url(../images/icons.png);
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.icon_logo {
+    background-position-y: 0;
+}
+
+.icon_search{
+    background-position-y: -45px;
+    background-position-x: 20px;
+}
+
+.icon_login{
+    background-position-y: -100px;
+}
+
+.icon_menu1{
+    background-position-y: -151px;
+}
+
+.icon_menu2{
+    background-position-y: -500px;
+}
+
+.icon_menu3{
+    background-position-y: -553px;
+    background-position-x: -3px;
+}
+
+.icon_menu4{
+    background-position-y: -603px;
+    background-position-x: -1px;
+}
+
+.icon_file1{
+    background-image: url(../images/icons.png), url(../images/icons.png);
+    background-position: 0 -200px, 15px -252px;
+}
+
+.open > .icon_file1{
+    background-image: url(../images/icons.png), url(../images/icons.png);
+    background-position: -2px -300px, 15px -351px;
+}
+
+
+.icon_inner{
+    background-position-y: -400px;
+}
+
+.icon_other1{
+    background-position-y: -627px;
+    background-position-x: 156px;
+}
+
+.icon_other2{
+    background-position-y: -734px;
+    background-position-x: 5px;
+}
+
+.icon_other3{
+    background-position-y: -780px;
+    background-position-x: 5px;
+}
+
+.icon_other4{
+    background-position-y: -686px;
+    background-position-x: 15px;
+}
+
+
