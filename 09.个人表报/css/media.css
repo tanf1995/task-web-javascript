@@ -1,5 +1,17 @@
 @media screen and (max-width: 1280px){
-    .main{
-        width: 1280px;
+    .main .body{
+        width: 1020px;
+        margin: 0 auto 0;
+    }
+
+    .main aside{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 1020px){
+    .main header{
+        width: 1020px;
     }
 }

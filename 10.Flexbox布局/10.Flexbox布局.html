@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务十， flex布局</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        li{
+            width: 150px;
+            background-color: #f00;
+        }
+
+        li:nth-child(1){
+            height: 120px;
+        }
+
+        li:nth-child(2){
+            height: 100px;
+        }
+
+        li:nth-child(3){
+            height: 40px;
+        }
+
+        li:nth-child(4){
+            height: 200px;
+        }
+
+        ul{
+            padding: 20px;
+
+            display: flex;
+            flex-flow: row wrap;
+            /* 子元素均匀分空隙排序，最左和最右的元素两边贴齐  */
+            justify-content: space-between;
+            /* 子元素垂直方向居中 */
+            align-items: center;
+        }
+
+        @media screen and (max-width: 640px){
+            ul{
+                padding: 20px;
+
+                display: flex;
+                flex-flow: row wrap;
+                /* 子元素均匀分空隙排序，最左和最右的元素两边贴齐  */
+                justify-content: space-between;
+                /* 子元素垂直方向居中 */
+                align-items: flex-start;
+            }
+
+            li{
+                background-color: #00A1F5;
+            }
+
+            li:nth-child(4){
+                order: -1;
+                background-color: #d45d5c;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>
