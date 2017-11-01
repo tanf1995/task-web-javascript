@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>小熊官网</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
@@ -145,6 +146,23 @@
         </article>
     </div>
 
+    <!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>-->
+    <script type="text/javascript" src="js/zepto.js"></script>
+    <script>
+        var lis = $('header nav ul li a');
+        var lantern = $('header nav .lantern img');
 
+        lis.each(function (i) {
+            $(this).bind("touchstart", function () {
+                alert('ss');
+            })
+        });
+
+        lantern.each(function () {
+            $(this).bind("swipe", function () {
+                alert('sss');
+            })
+        })
+    </script>
 </body>
 </html>
