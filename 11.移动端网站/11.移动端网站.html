@@ -160,14 +160,12 @@
         lis.each(function (i) {
             $(this).bind("touchstart", function () {
                 alert('ss');
-            })
+            });
         });
 
-        lantern.each(function () {
-            $(this).bind("swipe", function () {
-                alert('sss');
-            })
-        })
+        document.getElementsByTagName('img')[0].touchstart = function () {
+            alert('sxx');
+        };
     </script>
 </body>
 </html>

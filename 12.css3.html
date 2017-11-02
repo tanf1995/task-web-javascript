@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务十二， css3</title>
+    <style>
+
+        table tr:nth-child(2n+1) td{
+            background-color: #eee;
+        }
+
+        table tr:nth-child(-n+4) td{
+            color: #d45d5c;
+        }
+
+        table tr:first-child td{
+            background-color: #000;
+            color: #fff;
+        }
+
+        input{
+            display: block;
+            width: 100px;
+            margin: 0 auto 30px;
+        }
+
+        input:focus{
+            animation: input_to_big 2s;
+            width: 200px;
+        }
+
+        @keyframes input_to_big {
+            from {width: 100px;}
+            to {width: 200px}
+        }
+
+        .banner{
+            width: 300px;
+            height: 150px;
+            margin: 0 auto 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner div{
+            width: 300px;
+            height: 150px;
+            position: absolute;
+        }
+
+        .banner div:nth-child(1){
+            background-color: #d45d5c;
+            left: 0;
+        }
+
+        .banner div:nth-child(2){
+            background-color: #00A1F5;
+            left: 300px;
+        }
+
+        .banner div:nth-child(3){
+            background-color: #00FF00;
+            left: 600px;
+        }
+
+        .banner ul{
+            position: absolute;
+            right: 20px;
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner ul li{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .banner ul li a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        @keyframes bann_left1 {
+            0% {left: 0;opacity: 1}
+            16.667% {left: 0;opacity: 1}
+            33.333% {left: -300px;opacity:1;}
+            50% {left: -300px;opacity: 0;}
+            66.667% {left: 300px;opacity: 0}
+            83.333% {left: 300px;opacity: 1}
+            100% {left: 0;opacity: 1}
+        }
+
+        @keyframes bann_left2 {
+            0% {left: 300px;opacity: 0}
+            16.667% {left: 300px;opacity: 1}
+            33.333% {left: 0;opacity: 1}
+            50% {left: 0;opacity: 1}
+            66.667% {left: -300px;opacity: 1}
+            83.333% {left: -300px;opacity: 0}
+            100% {left: 300px;opacity: 0}
+        }
+
+        @keyframes bann_left3 {
+            0% {left: 600px;opacity: 0}
+            16.667% {left: 600px;opacity: 0}
+            33.333% {left: 300px;opacity: 0}
+            50% {left: 300px;opacity: 1}
+            66.667% {left: 0;opacity: 1}
+            83.333% {left: 0;opacity:1;}
+            100% {left: -300px;opacity: 1}
+        }
+
+
+        .banner div:nth-child(1){
+            opacity: 1;
+            /* infinite永久循环*/
+            animation: bann_left1 8s linear infinite;
+        }
+
+        .banner div:nth-child(2){
+            opacity: 0;
+            animation: bann_left2 8s linear infinite;
+        }
+
+        .banner div:nth-child(3){
+            opacity: 0;
+            animation: bann_left3 8s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!--border-表格边框大小，cellspacing-单元格间距， cellpadding-单元格边距-->
+    <table border="0" cellspacing="4" cellpadding="6" >
+        <tr>
+            <td>排名</td>
+            <td>网站</td>
+            <td>热度</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>百度前端技术学院</td>
+            <td>13000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>百度前端技术学院</td>
+            <td>12000</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>百度前端技术学院</td>
+            <td>11000</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>百度前端技术学院</td>
+            <td>10000</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>百度前端技术学院</td>
+            <td>9000</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>百度前端技术学院</td>
+            <td>8000</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>百度前端技术学院</td>
+            <td>7000</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>百度前端技术学院</td>
+            <td>6000</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>百度前端技术学院</td>
+            <td>5000</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>百度前端技术学院</td>
+            <td>4000</td>
+        </tr>
+    </table>
+    <br><br><br>
+
+    <input type="text">
+
+    <div class="banner">
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <ul>
+            <li><a href="javascript:">1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+        </ul>
+    </div>
+</body>
+</html>
