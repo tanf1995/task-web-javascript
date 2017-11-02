@@ -1,0 +1,15 @@
+@media screen and (max-width: 1200px){
+    aside{
+        display: none;
+    }
+
+    .body{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .main{
+        width: 800px;
+    }
+}

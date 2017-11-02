@@ -13,6 +13,7 @@ a{
 
 .main{
     width: 100%;
+    font-family: SimHei;
 }
 
 header{
@@ -33,7 +34,6 @@ aside{
     width: 20%;
     height: 500px;
     float: left;
-    background-color: #AAAAAA;
 }
 
 .body > li{
@@ -41,12 +41,12 @@ aside{
     border: 2px solid #fff;
 }
 
-.body > li:hover{
+.body > li:hover, .body .active{
     background-color: #fff;
     cursor: pointer;
 }
 
-.body > li:hover h2{
+.body > li:hover h2, .body .active h2{
     color: #000;
 }
 
@@ -62,6 +62,10 @@ aside{
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.body .menu_box{
+    display: none;
 }
 
 .body .menu li{
@@ -82,4 +86,22 @@ aside{
 .body .menu li:hover a{
     color: #fff;
     font-size: 22px;
+}
+
+aside{
+    display: flex;
+    justify-content: space-around;
+}
+
+aside ul{
+    margin: auto;
+}
+
+aside ul li{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+aside ul li a{
+    color: #e7504e;
 }
