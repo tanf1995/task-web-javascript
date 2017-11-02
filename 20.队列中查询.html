@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>队列中查询</title>
+
+    <style>
+        .queue{
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .queue li{
+            margin: 10px;
+            padding: 0 20px;
+            height: 50px;
+            list-style: none;
+            background-color: #d45d5c;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        textarea{
+            width: 200px;
+            height: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="btns">
+        <textarea placeholder="一次批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔"></textarea>
+        <input type="submit" value="左侧入">
+        <input type="submit" value="右侧入">
+        <input type="submit" value="左侧出">
+        <input type="submit" value="右侧出">
+
+        <input type="text">
+        <input type="submit" value="查询">
+    </div>
+
+    <ul class="queue">
+        <li>5</li>
+        <li>3</li>
+        <li>2</li>
+        <li>8</li>
+    </ul>
+
+
+    <script>
+        window.onload = function () {
+            var btns = document.getElementsByTagName('input');
+            var queue = document.getElementsByClassName('queue')[0];
+            var items = queue.getElementsByTagName('li');
+            var text = document.getElementsByTagName('textarea')[0];
+
+            //分割字符串
+            function cut_str() {
+                var value = text.value;
+                var array = value.split(/[,，、 \n\t\r]+/);
+                var res_array = [];
+
+                for(var i=0;i<array.length;i++){
+                    if(array[i]!=""){
+                        res_array.push(array[i]);
+                    }
+                }
+                return res_array;
+            }
+
+            //左侧入
+            btns[0].onclick = function () {
+                var array = cut_str();
+
+                for(var i=array.length-1;i>-1;i--){
+                    var node = document.createElement('li');
+                    node.innerHTML = array[i];
+                    queue.insertBefore(node, items[0]);
+                }
+                text.value = '';  //清空输入框
+            };
+
+            //右侧入
+            btns[1].onclick = function () {
+                var array = cut_str();
+
+                for(var i=0;i<array.length;i++){
+                    var node = document.createElement('li');
+                    node.innerHTML = array[i];
+                    queue.appendChild(node);
+                }
+                text.value = '';  //清空输入框
+            };
+
+            //左侧出
+            btns[2].onclick = function () {
+                queue.removeChild(items[0]);
+            };
+
+            //右侧出
+            btns[3].onclick = function () {
+                queue.removeChild(items[items.length-1]);
+            };
+
+            //点击出队列
+            for(var i=0;i<items.length;i++){
+                items[i].onclick = function () {
+                    queue.removeChild(this);
+                }
+            }
+
+            //查询
+            btns[5].onclick = function () {
+                var sel_value = btns[4].value;
+
+                if(sel_value){
+                    for(var i=0;i<items.length;i++){
+                        if(items[i].innerHTML.indexOf(sel_value) > -1){
+                            items[i].style.backgroundColor = 'aqua';
+                        }
+                        else {
+                            items[i].style.backgroundColor = '#d45d5c';
+                        }
+                    }
+                }
+
+                btns[4].value = "";
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟队列二</title>
+
+    <style>
+        .queue{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .queue li{
+            margin: 5px;
+            padding: 0;
+            width: 30px;
+            list-style: none;
+            background-color: #d45d5c;
+        }
+    </style>
+</head>
+<body>
+    <div class="btns">
+        <input type="text" id="val" placeholder="10-100数字">
+        <input type="submit" value="左侧入">
+        <input type="submit" value="右侧入">
+        <input type="submit" value="左侧出">
+        <input type="submit" value="右侧出">
+    </div>
+
+    <ul class="queue">
+    </ul>
+
+
+    <script>
+        window.onload = function () {
+            var btns = document.getElementsByTagName('input');
+            var queue = document.getElementsByClassName('queue')[0];
+            var items = queue.getElementsByTagName('li');
+            var value;
+
+            //左侧入
+            btns[1].onclick = function () {
+                value = parseInt(btns[0].value);
+                if(value!=NaN && value>=10 && value<=100){
+                    if(items.length > 60){
+                        alert('队列超出个数！');
+                        return false;
+                    }
+                    var node = document.createElement('li');
+                    node.style.height = value + 'px';
+                    queue.insertBefore(node, items[0]);
+
+                    btns[0].value = '';  //清空输入框
+                }
+            };
+
+            //右侧入
+            btns[2].onclick = function () {
+                value = parseInt(btns[0].value);
+                if(value!=NaN && value>=10 && value<=100){
+                    if(items.length > 60){
+                        alert('队列超出个数！');
+                        return false;
+                    }
+                    var node = document.createElement('li');
+                    node.style.height = value + 'px';
+                    queue.appendChild(node);
+
+                    btns[0].value = '';
+                }
+            };
+
+            //左侧出
+            btns[3].onclick = function () {
+                queue.removeChild(items[0]);
+            };
+
+            //右侧出
+            btns[4].onclick = function () {
+                queue.removeChild(items[items.length-1]);
+            };
+
+            //点击出队列
+            for(var i=0;i<items.length;i++){
+                items[i].onclick = function () {
+                    queue.removeChild(this);
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

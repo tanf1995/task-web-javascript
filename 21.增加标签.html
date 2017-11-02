@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加标签</title>
+    <style>
+        ul{
+            display: flex;
+            justify-content: flex-start;
+            flex-flow: row wrap;
+        }
+
+        ul li{
+            margin: 20px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 20px;
+            list-style: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .skill li{
+            background-color: #d45d5c;
+        }
+
+        .hobby li{
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    Tag: <input type="text" placeholder="你的特长技能">
+    <ul class="skill"></ul>
+
+    <textarea rows="6" cols="30" placeholder="你的兴趣爱好"></textarea><br>
+    <input type="submit" value="确认兴趣爱好">
+    <ul class="hobby"></ul>
+
+    <script>
+        var skill_text = document.getElementsByTagName('input')[0];
+        var hobby_text = document.getElementsByTagName('textarea')[0];
+        var skills = document.getElementsByClassName('skill')[0];
+        var skill_items = skills.getElementsByTagName('li');
+        var hobbys = document.getElementsByClassName('hobby')[0];
+        var hobbys_items = hobbys.getElementsByTagName('li');
+        var btn = document.getElementsByTagName('input')[1];
+        var skill_li = [];
+        var hobby_li = [];
+
+        // 浏览器兼容监听input输入事件
+        if("\v"=="v") {
+            skill_text.onpropertychange = webChange;
+        }else{
+            skill_text.addEventListener("input",webChange,false);
+        }
+        function webChange(){
+            if(skill_text.value[skill_text.value.length-1].match(/[,， \n]+/)){
+                array = skill_text.value.split(/[,， \n]+/);
+                text = array[array.length-2];
+                if(text){
+                    if(skill_li.indexOf(text)!=-1){
+                        return false;
+                    }
+
+                    if(skill_li.length==10){
+                        skill_li.shift();
+                        skills.removeChild(skill_items[0]);
+                    }
+                    skill_li.push(text);
+                    var node = document.createElement('li');
+                    node.innerHTML = text;
+                    skills.appendChild(node);
+                }
+            }
+        }
+
+        //input中按下回车
+
+
+        skills.onmouseover = function () {
+            skill_items = skills.getElementsByTagName('li');
+
+            for(var i=0;i<skill_items.length;i++){
+
+                (function (i) {
+                    //显示删除提示并变色
+                    skill_items[i].onmouseover = function () {
+                        this.innerHTML = '点击删除' + this.innerHTML;
+                        this.style.backgroundColor = '#eee';
+                    };
+
+                    //去除提示
+                    skill_items[i].onmouseleave = function () {
+                        this.innerHTML = this.innerHTML.substring(4);
+                        this.style.backgroundColor = '#d45d5c';
+                    }
+                })(i)
+
+            }
+
+            // 点击删除元素
+            for(var i=0;i<skill_items.length;i++){
+                (function (i) {
+                    skill_items[i].onclick = function () {
+                        skills.removeChild(skill_items[i]);
+                    }
+                })(i)
+            }
+        };
+
+        //爱好
+        btn.onclick = function () {
+            var array = hobby_text.value.split(/[,，、 \n\t\r]+/);
+
+            for(var i=0;i<array.length;i++){
+                if(hobby_li.indexOf(array[i])==-1){
+                    if(hobby_li.length==10){
+                        hobby_li.shift();
+                        hobbys.removeChild(hobbys_items[0]);
+                    }
+                    hobby_li.push(array[i]);
+
+                    var node = document.createElement('li');
+                    node.innerHTML = array[i];
+                    hobbys.appendChild(node);
+                }
+            }
+            hobby_text.value = "";
+        };
+
+        hobbys.onmouseover = function () {
+            hobbys_items = hobbys.getElementsByTagName('li');
+
+            for(var i=0;i<hobbys_items.length;i++){
+
+                (function (i) {
+                    //显示删除提示并变色
+                    hobbys_items[i].onmouseover = function () {
+                        this.innerHTML = '点击删除' + this.innerHTML;
+                        this.style.backgroundColor = '#eee';
+                    };
+
+                    //去除提示
+                    hobbys_items[i].onmouseleave = function () {
+                        this.innerHTML = this.innerHTML.substring(4);
+                        this.style.backgroundColor = 'orange';
+                    }
+                })(i)
+
+            }
+
+            // 点击删除元素
+            for(var i=0;i<hobbys_items.length;i++){
+                (function (i) {
+                    hobbys_items[i].onclick = function () {
+                        hobbys.removeChild(hobbys_items[i]);
+                    }
+                })(i)
+            }
+        };
+    </script>
+</body>
+</html>
