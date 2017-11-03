@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQ树</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li{
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .tree .active{
+            background-color: #cc8091;
+        }
+
+        .tree{
+            width: 70%;
+            height: 800px;
+            float: left;
+        }
+
+        .tree li{
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .tree p{
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid #cc8091;
+        }
+
+        .tree ul{
+            display: none;
+        }
+
+        aside{
+            width: 30%;
+            height: 800px;
+            float: left;
+            background-color: #d45d5c;
+        }
+
+        aside div{
+            margin-top: 50px;
+            margin-left: 30px;
+        }
+
+        aside input{
+            width: 150px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="tree">
+        <li>
+            <p>文件一</p>
+            <ul>
+                <li>
+                    <p>html</p>
+                    <ul>
+                        <li>
+                            <P>h5</P>
+                        </li>
+                        <li>
+                            <p>xhtml</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>css</p>
+                </li>
+                <li>
+                    <p>js</p>
+                </li>
+                <li>
+                    <p>python</p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>文件二</p>
+            <ul>
+                <li>
+                    <p>html</p>
+                    <ul>
+                        <li>
+                            <P>h5</P>
+                        </li>
+                        <li>
+                            <p>xhtml</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>css</p>
+                </li>
+                <li>
+                    <p>js</p>
+                </li>
+                <li>
+                    <p>python</p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>文件三</p>
+        </li>
+        <li>
+            <p>文件四</p>
+        </li>
+    </ul>
+
+    <aside>
+        <div class="add">
+            <input type="text">
+            <input type="submit" value="增加节点">
+        </div>
+
+        <div class="delete">
+            <input type="submit" value="删除节点">
+        </div>
+
+        <div class="search">
+            <input type="text">
+            <input type="submit" value="搜索">
+        </div>
+    </aside>
+
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js二叉树</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            border: 1px solid #000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .root{
+            width: 1200px;
+            height: 200px;
+            margin: 20px auto 0;
+        }
+
+        .root > div{
+            width: 570px;
+            height: 180px;
+        }
+
+        .root > div > div{
+            width: 270px;
+            height: 160px;
+        }
+
+        .root > div > div > div{
+            width: 120px;
+            height: 140px;
+        }
+
+        .btns{
+            margin: 20px auto 0;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="root">
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btns">
+        <input type="submit" value="先序遍历">
+        <input type="submit" value="中序遍历">
+        <input type="submit" value="后序遍历">
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
