@@ -87,16 +87,18 @@ control_btn.onmouseover = function () {
                     command: 'flight'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
-                    command_info.appendChild(node);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
-                    command_info.appendChild(node);
-                }
+                setTimeout(function () {
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
+                        command_info.appendChild(node);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1000)
             };
 
             btns[1].onclick = function () {
@@ -105,16 +107,18 @@ control_btn.onmouseover = function () {
                     command: 'stop'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
-                    command_info.appendChild(node);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
-                    command_info.appendChild(node);
-                }
+                setTimeout(function () {
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
+                        command_info.appendChild(node);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1000)
             };
 
             btns[2].onclick = function () {
@@ -123,20 +127,22 @@ control_btn.onmouseover = function () {
                     command: 'drop'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
-                    command_info.appendChild(node);
+                setTimeout(function () {
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
+                        command_info.appendChild(node);
 
-                    airship_list.splice(i);
-                    var control_btns = control_btn.getElementsByClassName('send_command');
-                    control_btn.removeChild(control_btns[i]);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
-                    command_info.appendChild(node);
-                }
+                        airship_list.splice(i);
+                        var control_btns = control_btn.getElementsByClassName('send_command');
+                        control_btn.removeChild(control_btns[i]);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1000)
             };
             //命令列表滑动条自动滑到底部
             command_info.scrollTop = command_info.scrollHeight;
