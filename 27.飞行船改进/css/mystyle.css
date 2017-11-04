@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: SimHei;
+}
+
+.screen{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 30%;
+    background-color: #000;
+    display: flex;
+}
+
+.commands{
+    position: absolute;
+    top: 0;
+    left: 70%;
+    right: 0;
+    bottom: 50%;
+    background-color: #43b29e;
+    overflow-y: auto;
+}
+
+.control{
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    right: 0;
+    bottom: 0;
+    background-color: #e7504e;
+    padding: 10px;
+}
+
+.screen .warehouse{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: blue;
+    margin: auto;
+    position: relative;
+}
+
+.screen .warehouse .airship{
+    width: 120px;
+    height: 30px;
+    background-color: #aaa;
+    border-radius: 10px;
+    line-height: 30px;
+    position: absolute;
+    overflow: hidden;
+    margin: auto;
+    top: 0;
+}
+
+.screen .warehouse .airship span:last-child{
+    position: absolute;
+    left: 100px;
+    right: 0;
+    height: 30px;
+    background-color: blue;
+
+}
+
+.commands p{
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+
+.control .create{
+    width: 150px;
+    height: 30px;
+}
+
+.control .send_command{
+    margin: 10px 0;
+    color: #fff;
+}
+
+.control input{
+    cursor: pointer;
+}

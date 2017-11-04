@@ -2,12 +2,34 @@ var create_btn = document.getElementsByClassName('create')[0];
 var warehouse = document.getElementsByClassName('warehouse')[0];
 var control_btn = document.getElementsByClassName('control')[0];
 var command_info = document.getElementsByClassName('commands')[0];
+var power_radio = document.getElementsByClassName('power_system')[0].getElementsByTagName('input');
+var energy_radio = document.getElementsByClassName('energy_system')[0].getElementsByTagName('input');
 var airship_num = 0;
 var airship_list = [];
 
 //创建新飞船
 create_btn.onclick = function () {
-    if(airship_num<4){
+    var power_value = 0;
+    var energy_value = 0;
+    var speed_list = [30, 50, 80];
+    var edsspeed_list = [5, 7, 9];
+    var batspeed_list = [2, 3, 4];
+    var speed = 0;
+    var edsspeed = 0;
+    var batspeed = 0;
+    for(var i=0;i<power_radio.length;i++){
+        if(power_radio[i].checked){
+            power_value = power_radio[i].value;
+            speed = speed_list[i];
+            edsspeed = edsspeed_list[i];
+        }
+        if(energy_radio[i].checked){
+            energy_value = energy_radio[i].value;
+            batspeed = batspeed_list[i];
+        }
+    }
+
+    if(airship_num<4 && power_value!=0 && energy_value!=0){
         //创建飞船节点
         var elem = document.createElement('div');
         var span_elem1 = document.createElement('span');
@@ -29,7 +51,9 @@ create_btn.onclick = function () {
         elem.style.top = -50 - airship_num*50  + 'px';
         elem.style.left = 40 + 'px';
         warehouse.appendChild(elem);
-        var airship = Airship(20, 5, 2, elem, 85+(airship_num+1)*50);
+
+        if(power_value)
+        var airship = Airship(speed, edsspeed, batspeed, elem, 85+(airship_num+1)*50);
         airship_list.push(airship);
 
         //输出命令信息
@@ -86,20 +110,21 @@ control_btn.onmouseover = function () {
                     id: 1,
                     command: 'flight'
                 };
-                setTimeout(function () {
-                    var res = airship_list[i].get_command(data);
-                    console.log(res);
+                var new_data = data_to_2(data);
+                var timer = setInterval(function () {
+                    var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
                         node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
                         command_info.appendChild(node);
+                        clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + i+1 + '号飞船';
                         command_info.appendChild(node);
                     }
-                }, 1100)
+                }, 1000)
             };
 
             btns[1].onclick = function () {
@@ -107,16 +132,18 @@ control_btn.onmouseover = function () {
                     id: 2,
                     command: 'stop'
                 };
-                setTimeout(function () {
-                    var res = airship_list[i].get_command(data);
+                var new_data = data_to_2(data);
+                var timer = setInterval(function () {
+                    var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
                         node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
                         command_info.appendChild(node);
+                        clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + i+1 + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -127,21 +154,23 @@ control_btn.onmouseover = function () {
                     id: 3,
                     command: 'drop'
                 };
-                setTimeout(function () {
-                    var res = airship_list[i].get_command(data);
+                var new_data = data_to_2(data);
+                var timer = setTimeout(function () {
+                    var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
                         node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
                         command_info.appendChild(node);
 
-                        airship_list.splice(i);
                         airship_num -= 1;
+                        airship_list.splice(i);
                         var control_btns = control_btn.getElementsByClassName('send_command');
                         control_btn.removeChild(control_btns[i]);
+                        clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + i+1 + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -151,6 +180,19 @@ control_btn.onmouseover = function () {
         })(i);
     }
 };
+
+//data数据转二进制
+function data_to_2(data) {
+    if(data['id']==1){
+        return '0001';
+    }
+    else if(data['id']==2){
+        return '0010';
+    }
+    else if(data['id']==3){
+        return '0010';
+    }
+}
 
 // 飞行船类
 function Airship(speed, edspeed, batspeed, elem, radius) {
@@ -280,6 +322,7 @@ function Airship(speed, edspeed, batspeed, elem, radius) {
         a.timer_bat = setInterval(function () {
             if(a.energy>=100-a.batspeed){
                 a.energy = 100;
+                a.elem.getElementsByTagName('span')[1].innerHTML = a.energy;
                 clearInterval(a.timer_bat);
                 return false;
             }
@@ -288,13 +331,27 @@ function Airship(speed, edspeed, batspeed, elem, radius) {
         }, 1000)
     };
 
+    //二进制转data
+    function to_data(data) {
+        if(data=='0001'){
+            return 1;
+        }
+        else if(data=='0010'){
+            return 2;
+        }
+        else{
+            return 3;
+        }
+    }
+
     //接受命令
     a.get_command = function (data) {
         rand_num = Math.random();
-        if(rand_num<0.3){
+        if(rand_num<0.1){
             return false;
         }
-        switch (parseInt(data['id'])){
+        var new_data = to_data(data);
+        switch (new_data){
             case 1: // 飞行命令
                 if(this.status || this.energy < this.speed){
                     return false;
