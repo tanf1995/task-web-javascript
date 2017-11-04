@@ -87,16 +87,19 @@ control_btn.onmouseover = function () {
                     command: 'flight'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
-                    command_info.appendChild(node);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
-                    command_info.appendChild(node);
-                }
+                setTimeout(function () {
+                    console.log(res);
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
+                        command_info.appendChild(node);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1100)
             };
 
             btns[1].onclick = function () {
@@ -105,16 +108,18 @@ control_btn.onmouseover = function () {
                     command: 'stop'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
-                    command_info.appendChild(node);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
-                    command_info.appendChild(node);
-                }
+                setTimeout(function () {
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
+                        command_info.appendChild(node);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1000);
             };
 
             btns[2].onclick = function () {
@@ -123,20 +128,22 @@ control_btn.onmouseover = function () {
                     command: 'drop'
                 };
                 var res = airship_list[i].get_command(data);
-                if(res){
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
-                    command_info.appendChild(node);
+                setTimeout(function () {
+                    if(res){
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
+                        command_info.appendChild(node);
 
-                    airship_list.splice(i);
-                    var control_btns = control_btn.getElementsByClassName('send_command');
-                    control_btn.removeChild(control_btns[i]);
-                }
-                else {
-                    node = document.createElement('p');
-                    node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
-                    command_info.appendChild(node);
-                }
+                        airship_list.splice(i);
+                        var control_btns = control_btn.getElementsByClassName('send_command');
+                        control_btn.removeChild(control_btns[i]);
+                    }
+                    else {
+                        node = document.createElement('p');
+                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
+                        command_info.appendChild(node);
+                    }
+                }, 1000);
             };
             //命令列表滑动条自动滑到底部
             command_info.scrollTop = command_info.scrollHeight;
@@ -256,7 +263,7 @@ function Airship(speed, edspeed, batspeed, elem, radius) {
     a.cut_energy = function () {
         clearInterval(a.timer_bat);
         a.timer_eds = setInterval(function () {
-            if(a.energy<a.edspeed){
+            if(a.energy<a.edspeed || !a.status){
                 a.stop_flight();
                 clearInterval(a.timer_eds);
                 a.add_energy();
@@ -282,56 +289,36 @@ function Airship(speed, edspeed, batspeed, elem, radius) {
 
     //接受命令
     a.get_command = function (data) {
-        setTimeout(function () {
-            rand_num = Math.random();
-            if(rand_num<0.3){
+        rand_num = Math.random();
+        if(rand_num<0.3){
+            return false;
+        }
+        switch (parseInt(data['id'])){
+            case 1: // 飞行命令
+                if(this.status || this.energy < this.speed){
+                    return false;
+                }
+                setTimeout(function () {
+                    a.flight();
+                    a.cut_energy();
+                }, 1000);
+                break;
+
+            case 2: // 停止飞行
+                if(!this.status){
                 return false;
-            }
-            switch (parseInt(data['id'])){
-                case 1: // 飞行命令
-                    if(this.status || this.energy < this.speed){
-                        return false;
-                    }
-                    this.flight();
-                    this.cut_energy();
-                    break;
+                }
+                setTimeout(function () {
+                    a.stop_flight();
+                }, 1000);
+                break;
 
-                case 2: // 停止飞行
-                    if(!this.status){
-                        return false;
-                    }
-                    this.stop_flight();
-                    break;
-
-                case 3: //销毁飞船
-                    this.drop_airship();
-                    break;
-            }
-        }, 1000);
-        // rand_num = Math.random();
-        // if(rand_num<0.3){
-        //     return false;
-        // }
-        // switch (parseInt(data['id'])){
-        //     case 1: // 飞行命令
-        //         if(this.status || this.energy < this.speed){
-        //             return false;
-        //         }
-        //         this.flight();
-        //         this.cut_energy();
-        //         break;
-        //
-        //     case 2: // 停止飞行
-        //         if(!this.status){
-        //         return false;
-        //         }
-        //         this.stop_flight();
-        //         break;
-        //
-        //     case 3: //销毁飞船
-        //         this.drop_airship();
-        //         break;
-        // }
+            case 3: //销毁飞船
+                setTimeout(function () {
+                    a.drop_airship();
+                }, 1000);
+                break;
+        }
         return true;
     };
 
