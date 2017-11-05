@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>飞行船</title>
+    <link rel="stylesheet" href="css/mystyle.css">
+</head>
+<body>
+    <div class="screen">
+        <div class="warehouse"></div>
+    </div>
+
+    <div class="commands">
+
+    </div>
+
+    <div class="airship_info">
+        <table cellspacing="0" border="1">
+            <tr>
+                <td>飞船</td>
+                <td>动力系统</td>
+                <td>能量系统</td>
+                <td>飞行状况</td>
+                <td>剩余能耗</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="control">
+        <div class="power_system">
+            <label>动力系统选择：</label><br>
+            <label><input name="power" type="radio" value="1" />前进号（速率30px/s, 能耗5%/s）</label><br>
+            <label><input name="power" type="radio" value="2" />奔腾号（速率50px/s, 能耗7%/s）</label><br>
+            <label><input name="power" type="radio" value="3" />超越号（速率80px/s, 能耗9%/s）</label>
+        </div>
+        <div class="energy_system">
+            <label>能源系统选择：</label><br>
+            <label><input name="energy" type="radio" value="1" />劲量型（补充能源速度2%/s）</label><br>
+            <label><input name="energy" type="radio" value="2" />光能型（补充能源速度3%/s）</label><br>
+            <label><input name="energy" type="radio" value="3" />永久型（补充能源速度4%/s）</label>
+        </div>
+        <input type="submit" value="创建新飞船" class="create">
+
+    </div>
+
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

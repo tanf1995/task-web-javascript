@@ -3,6 +3,8 @@ var warehouse = document.getElementsByClassName('warehouse')[0];
 var control_btn = document.getElementsByClassName('control')[0];
 var command_info = document.getElementsByClassName('commands')[0];
 var airship_num = 0;
+var airship_index = 0;
+var airship_pos = [1, 2, 3, 4];
 var airship_list = [];
 
 //创建新飞船
@@ -13,7 +15,7 @@ create_btn.onclick = function () {
         var span_elem1 = document.createElement('span');
         var span_elem2 = document.createElement('span');
         var span_elem3 = document.createElement('span');
-        var text = document.createTextNode(airship_num + 1);
+        var text = document.createTextNode(airship_index + 1);
 
         elem.className = 'airship';
         span_elem1.appendChild(text);
@@ -26,15 +28,16 @@ create_btn.onclick = function () {
         text = document.createTextNode('%');
         elem.appendChild(text);
         elem.appendChild(span_elem3);
-        elem.style.top = -50 - airship_num*50  + 'px';
+        elem.style.top =- airship_pos[0]*50  + 'px';
         elem.style.left = 40 + 'px';
         warehouse.appendChild(elem);
-        var airship = Airship(20, 5, 2, elem, 85+(airship_num+1)*50);
+        var airship = Airship(20, 5, 2, elem, 85+(airship_pos[0])*50, airship_index, airship_pos[0]);
         airship_list.push(airship);
+        airship_pos.shift();
 
         //输出命令信息
         node = document.createElement('p');
-        node.innerHTML = airship_num+1 + '号飞船创建成功';
+        node.innerHTML = airship_index+1 + '号飞船创建成功';
         command_info.appendChild(node);
 
         //创建控制按钮组
@@ -47,7 +50,7 @@ create_btn.onclick = function () {
         text = document.createTextNode('对');
         label.appendChild(text);
         span_elem1 = document.createElement('span');
-        text = document.createTextNode(airship_num+1);
+        text = document.createTextNode(airship_index+1);
         span_elem1.appendChild(text);
         label.appendChild(span_elem1);
         text = document.createTextNode('号飞船发送命令： ');
@@ -69,6 +72,7 @@ create_btn.onclick = function () {
         control_btn.appendChild(elem);
 
         airship_num += 1;
+        airship_index += 1;
     }
 };
 
@@ -88,15 +92,14 @@ control_btn.onmouseover = function () {
                 };
                 setTimeout(function () {
                     var res = airship_list[i].get_command(data);
-                    console.log(res);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 成功';
+                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “开始飞行” 成功';
                         command_info.appendChild(node);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “开始飞行” 失败';
+                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “开始飞行” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1100)
@@ -111,12 +114,12 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 成功';
+                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “停止飞行” 成功';
                         command_info.appendChild(node);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “停止飞行” 失败';
+                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “停止飞行” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -127,21 +130,26 @@ control_btn.onmouseover = function () {
                     id: 3,
                     command: 'drop'
                 };
+                console.log(i);
+                console.log(airship_list);
                 setTimeout(function () {
                     var res = airship_list[i].get_command(data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 成功';
+                        node.innerHTML = airship_list[i].index + parseInt(1) + '号飞船接受命令 “销毁飞船” 成功';
                         command_info.appendChild(node);
 
-                        airship_list.splice(i);
+                        var pos = airship_list[i].pos;
+                        airship_pos.push(pos);
+                        airship_pos.sort();
+                        airship_list.splice(i, 1);
                         airship_num -= 1;
                         var control_btns = control_btn.getElementsByClassName('send_command');
                         control_btn.removeChild(control_btns[i]);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = i+1 + '号飞船接受命令 “销毁飞船” 失败';
+                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “销毁飞船” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -153,7 +161,7 @@ control_btn.onmouseover = function () {
 };
 
 // 飞行船类
-function Airship(speed, edspeed, batspeed, elem, radius) {
+function Airship(speed, edspeed, batspeed, elem, radius, index, pos) {
     var a = new Object();
     a.elem = elem;  //飞船节点
     a.speed = speed;  //飞行速度，时间单位s
@@ -162,6 +170,8 @@ function Airship(speed, edspeed, batspeed, elem, radius) {
     a.energy = 100;  //能源量
     a.status = false;  //飞行状态，默认停止
     //飞行方向默认顺时针，数字代表运功轨迹，1--代表往右下，2--左下，3--左上， 4--右上
+    a.index = index; // 飞船系数
+    a.pos = pos;  // 飞船轨道位置
     a.direction = null;
     a.timer_fi = null;
     a.timer_eds = null;

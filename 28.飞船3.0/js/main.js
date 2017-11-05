@@ -13,21 +13,27 @@ var airship_list = [];
 create_btn.onclick = function () {
     var power_value = 0;
     var energy_value = 0;
+    var power_list = ['前进号', '奔腾号', '超越号'];
+    var energy_list = ['劲量型', '光能型', '永久型'];
     var speed_list = [30, 50, 80];
     var edsspeed_list = [5, 7, 9];
     var batspeed_list = [2, 3, 4];
     var speed = 0;
     var edsspeed = 0;
     var batspeed = 0;
+    var power_name = null;
+    var energy_name = null;
     for(var i=0;i<power_radio.length;i++){
         if(power_radio[i].checked){
             power_value = power_radio[i].value;
+            power_name = power_list[i];
             speed = speed_list[i];
             edsspeed = edsspeed_list[i];
         }
         if(energy_radio[i].checked){
             energy_value = energy_radio[i].value;
             batspeed = batspeed_list[i];
+            energy_name = energy_list[i];
         }
     }
 
@@ -53,9 +59,44 @@ create_btn.onclick = function () {
         elem.style.top = -airship_pos[0]*50  + 'px';
         elem.style.left = 40 + 'px';
         warehouse.appendChild(elem);
+
         var airship = Airship(speed, edsspeed, batspeed, elem, 85+airship_pos[0]*50, airship_index, airship_pos[0]);
         airship_list.push(airship);
         airship_pos.shift();
+
+        //创建飞船信息并监听信息
+        var airship_info = document.getElementsByClassName('airship_info')[0].getElementsByTagName('table')[0];
+        var tr_node = document.createElement('tr');
+        var td_node = document.createElement('td');
+        var td_node1 = document.createElement('td');
+        var td_node2 = document.createElement('td');
+        var td_node3 = document.createElement('td');
+        var td_node4 = document.createElement('td');
+
+        text = document.createTextNode(airship_index+1 + '号');
+        td_node.appendChild(text);
+        text = document.createTextNode(power_name);
+        td_node1.appendChild(text);
+        text = document.createTextNode(energy_name);
+        td_node2.appendChild(text);
+        text = document.createTextNode('停止飞行');
+        td_node3.appendChild(text);
+        text = document.createTextNode('100%');
+        td_node4.appendChild(text);
+        tr_node.appendChild(td_node);
+        tr_node.appendChild(td_node1);
+        tr_node.appendChild(td_node2);
+        tr_node.appendChild(td_node3);
+        tr_node.appendChild(td_node4);
+        airship_info.appendChild(tr_node);
+        //监听飞船信息
+        setInterval(function () {
+            var status = airship.status?'飞行中':'停止飞行';
+            var energy = airship.energy;
+            td_node3.innerHTML = status;
+            td_node4.innerHTML = energy;
+        }, 1000);
+
 
         //输出命令信息
         node = document.createElement('p');
@@ -157,25 +198,28 @@ control_btn.onmouseover = function () {
                     command: 'drop'
                 };
                 var new_data = data_to_2(data);
-                var timer = setInterval(function () {
+                var timer = setTimeout(function () {
                     var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML =airship_list[i].index+parseInt(1) + '号飞船接受命令 “销毁飞船” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “销毁飞船” 成功';
                         command_info.appendChild(node);
 
                         var pos = airship_list[i].pos;
                         airship_pos.push(pos);
                         airship_pos.sort();
-                        airship_list.splice(i, 1);
                         airship_num -= 1;
+                        airship_list.splice(i, 1);
                         var control_btns = control_btn.getElementsByClassName('send_command');
                         control_btn.removeChild(control_btns[i]);
+                        var airship_info = document.getElementsByClassName('airship_info')[0].getElementsByTagName('table')[0];
+                        var airship_tr = airship_info.getElementsByTagName('tr')[i+1];
+                        airship_info.removeChild(airship_tr);
                         clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = 'BUS系统正在重新发送信号给' + airship_list[i].index+parseInt(1) + '号飞船';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + parseInt(i)+parseInt(1) + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -358,10 +402,8 @@ function Airship(speed, edspeed, batspeed, elem, radius, index, pos) {
             return false;
         }
         var new_data = to_data(data);
-        console.log(new_data);
         switch (new_data){
             case 1: // 飞行命令
-                console.log('jj1');
                 if(this.status || this.energy < this.speed){
                     return false;
                 }
@@ -372,7 +414,6 @@ function Airship(speed, edspeed, batspeed, elem, radius, index, pos) {
                 break;
 
             case 2: // 停止飞行
-                console.log('jj2');
                 if(!this.status){
                 return false;
                 }
@@ -382,7 +423,6 @@ function Airship(speed, edspeed, batspeed, elem, radius, index, pos) {
                 break;
 
             case 3: //销毁飞船
-                console.log('jj');
                 setTimeout(function () {
                     a.drop_airship();
                 }, 1000);
