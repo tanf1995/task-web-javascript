@@ -15,7 +15,6 @@
 
     .hold_place{
         display: block;
-        opacity: 0;
     }
 
     label{
@@ -39,29 +38,29 @@
 <body>
     <label>名称&nbsp;&nbsp;&nbsp;&nbsp; </label>
     <input type="text" id="name">
+    <p class="hold_place"></p>
     <p>必填长度为4~16个字符</p>
-    <p class="hold_place">占位</p>
 
     <!--onkeyup="value=value.replace(/[^\w\/]/ig,'')"  输入字母和数字-->
     <label>密码&nbsp;&nbsp;&nbsp;&nbsp; </label>
     <input type="password" id="password">
+    <p class="hold_place"></p>
     <p>使用字母和数字的组合</p>
-    <p class="hold_place">占位</p>
 
     <label>密码确认 </label>
     <input type="password" id="password2">
+    <p class="hold_place"></p>
     <p>确认密码</p>
-    <p class="hold_place">占位</p>
 
     <label>邮箱&nbsp;&nbsp;&nbsp;&nbsp; </label>
     <input type="text" id="email">
+    <p class="hold_place"></p>
     <p>输入你的邮箱</p>
-    <p class="hold_place">占位</p>
 
     <label>手机&nbsp;&nbsp;&nbsp;&nbsp; </label>
     <input type="text" id="phone_number">
+    <p class="hold_place"></p>
     <p>输入你的手机号码</p>
-    <p class="hold_place">占位</p>
 
     <input type="submit" value="验证" id="verify">
 
@@ -79,13 +78,17 @@
             var email_is_usable = false;
             var phone_is_usable = false;
 
-            for (var i = 0; i < inputs.length - 1; i++) {
-                (function (i) {
-                    inputs[i].onfocus = function () {
-                        this.nextElementSibling.style.display = 'block';
-                        this.nextElementSibling.nextElementSibling.style.display = 'none';
-                    }
-                })(i);
+            show_reminder();
+            //显示提示
+            function show_reminder() {
+                for (var i = 0; i < inputs.length - 1; i++) {
+                    (function (i) {
+                        inputs[i].onfocus = function () {
+                            this.nextElementSibling.style.display = 'none';
+                            this.nextElementSibling.nextElementSibling.style.display = 'block';
+                        }
+                    })(i);
+                }
             }
 
             name.onblur = function(){
@@ -141,6 +144,8 @@
                     name.nextElementSibling.style.color = 'red';
                     name.style.outlineColor = 'red';
                 }
+                name.nextElementSibling.style.display = 'block';
+                name.nextElementSibling.nextElementSibling.style.display = 'none';
             }
 
             //检查密码栏
@@ -155,6 +160,8 @@
                     pwd.nextElementSibling.style.color = 'red';
                     pwd.style.outlineColor = 'red';
                 }
+                 pwd.nextElementSibling.style.display = 'block';
+                 pwd.nextElementSibling.nextElementSibling.style.display = 'none';
             }
 
             //检查重复输入密码栏
@@ -171,6 +178,8 @@
                     pwd2.nextElementSibling.style.color = 'red';
                     pwd2.style.outlineColor = 'red';
                 }
+                pwd2.nextElementSibling.style.display = 'block';
+                pwd2.nextElementSibling.nextElementSibling.style.display = 'none';
             }
 
             //检查邮箱栏
@@ -186,6 +195,8 @@
                     email.nextElementSibling.style.color = 'red';
                     email.style.outlineColor = 'red';
                 }
+                email.nextElementSibling.style.display = 'block';
+                email.nextElementSibling.nextElementSibling.style.display = 'none';
             }
 
             //检查手机号码栏
@@ -201,6 +212,8 @@
                     p_num.nextElementSibling.style.color = 'red';
                     p_num.style.outlineColor = 'red';
                 }
+                p_num.nextElementSibling.style.display = 'block';
+                p_num.nextElementSibling.nextElementSibling.style.display = 'none';
             }
 
             verify.onclick = function () {
