@@ -158,13 +158,13 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+1 + '号飞船接受命令 “开始飞行” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index)+1 + '号飞船接受命令 “开始飞行” 成功';
                         command_info.appendChild(node);
                         clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = 'BUS系统正在重新发送信号给' + airship_list[i].index+1 + '号飞船';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + parseInt(airship_list[i].index)+1 + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000)
@@ -180,13 +180,13 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(new_data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+1 + '号飞船接受命令 “停止飞行” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index)+1 + '号飞船接受命令 “停止飞行” 成功';
                         command_info.appendChild(node);
                         clearInterval(timer);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = 'BUS系统正在重新发送信号给' + airship_list[i].index+1 + '号飞船';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + parseInt(airship_list[i].index)+1 + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -219,7 +219,7 @@ control_btn.onmouseover = function () {
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = 'BUS系统正在重新发送信号给' + parseInt(i)+parseInt(1) + '号飞船';
+                        node.innerHTML = 'BUS系统正在重新发送信号给' + parseInt(airship_list[i].index)+parseInt(1) + '号飞船';
                         command_info.appendChild(node);
                     }
                 }, 1000);

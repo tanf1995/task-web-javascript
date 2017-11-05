@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单验证</title>
+</head>
+<style>
+    p{
+        height: 20px;
+        font-size: 14px;
+        color: #aaa;
+        display: none;
+        margin-left: 150px;
+    }
+
+    .hold_place{
+        display: block;
+        opacity: 0;
+    }
+
+    label{
+        font-size: 25px;
+        line-height: 40px;
+    }
+
+    input{
+        height: 40px;
+        width: 400px;
+    }
+
+    #verify{
+        background-color: blue;
+        color:#fff;
+        width: 60px;
+        height: 40px;
+        margin-left: 500px;
+    }
+</style>
+<body>
+    <label>名称&nbsp;&nbsp;&nbsp;&nbsp; </label>
+    <input type="text" id="name">
+    <p>必填长度为4~16个字符</p>
+    <p class="hold_place">占位</p>
+
+    <!--onkeyup="value=value.replace(/[^\w\/]/ig,'')"  输入字母和数字-->
+    <label>密码&nbsp;&nbsp;&nbsp;&nbsp; </label>
+    <input type="password" id="password">
+    <p>使用字母和数字的组合</p>
+    <p class="hold_place">占位</p>
+
+    <label>密码确认 </label>
+    <input type="password" id="password2">
+    <p>确认密码</p>
+    <p class="hold_place">占位</p>
+
+    <label>邮箱&nbsp;&nbsp;&nbsp;&nbsp; </label>
+    <input type="text" id="email">
+    <p>输入你的邮箱</p>
+    <p class="hold_place">占位</p>
+
+    <label>手机&nbsp;&nbsp;&nbsp;&nbsp; </label>
+    <input type="text" id="phone_number">
+    <p>输入你的手机号码</p>
+    <p class="hold_place">占位</p>
+
+    <input type="submit" value="验证" id="verify">
+
+    <script>
+        window.onload = function () {
+            var name = document.getElementById('name');
+            var pwd = document.getElementById('password');
+            var pwd2 = document.getElementById('password2');
+            var email = document.getElementById('email');
+            var p_num = document.getElementById('phone_number');
+            var inputs = document.getElementsByTagName('input');
+            var verify = document.getElementById('verify');
+            var name_is_usable = false;
+            var pwd_is_usable = false;
+            var email_is_usable = false;
+            var phone_is_usable = false;
+
+            for (var i = 0; i < inputs.length - 1; i++) {
+                (function (i) {
+                    inputs[i].onfocus = function () {
+                        this.nextElementSibling.style.display = 'block';
+                        this.nextElementSibling.nextElementSibling.style.display = 'none';
+                    }
+                })(i);
+            }
+
+            name.onblur = function(){
+                name = document.getElementById('name');
+                check_name();
+            };
+
+            pwd.onblur = function () {
+                pwd = document.getElementById('password');
+                check_pwd();
+            };
+
+            pwd2.onblur = function () {
+                pwd2 = document.getElementById('password2');
+                check_pwd_again();
+            };
+
+            email.onblur = function () {
+                email = document.getElementById('email');
+                check_email();
+            };
+
+            p_num.onblur = function () {
+                p_num = document.getElementById('phone_number');
+                check_phone();
+            };
+
+            //检查姓名栏
+             function check_name() {
+                var len = 0;
+                for (var i = 0; i < name.value.length; i++) {
+                    if (name.value.charCodeAt(i) > 255) { // unicode字符，汉字大于255
+                        len += 2;
+                    }
+                    else {
+                        len += 1;
+                    }
+                }
+
+                if (len >= 6 && len <= 16) {
+                    name.nextElementSibling.innerHTML = '名称格式正确';
+                    name.nextElementSibling.style.color = 'aqua';
+                    name.style.outlineColor = 'aqua';
+                    name_is_usable = true;
+                }
+                else if (len == 0) {
+                    name.nextElementSibling.innerHTML = '姓名不能为空';
+                    name.nextElementSibling.style.color = 'red';
+                    name.style.outlineColor = 'red';
+                }
+                else {
+                    name.nextElementSibling.innerHTML = '名称格式不正确';
+                    name.nextElementSibling.style.color = 'red';
+                    name.style.outlineColor = 'red';
+                }
+            }
+
+            //检查密码栏
+             function check_pwd() {
+                if(pwd.value.length!=0){
+                    pwd.nextElementSibling.innerHTML = '密码可用';
+                    pwd.nextElementSibling.style.color = 'aqua';
+                    pwd.style.outlineColor = 'aqua';
+                }
+                else {
+                    pwd.nextElementSibling.innerHTML = '密码不能为空';
+                    pwd.nextElementSibling.style.color = 'red';
+                    pwd.style.outlineColor = 'red';
+                }
+            }
+
+            //检查重复输入密码栏
+            function check_pwd_again() {
+                var pwd = document.getElementById('password').value;
+                if(pwd2.value==pwd && pwd2.value.length!=0){
+                    pwd2.nextElementSibling.innerHTML = '密码可用';
+                    pwd2.nextElementSibling.style.color = 'aqua';
+                    pwd2g.style.outlineColor = 'aqua';
+                    pwd_is_usable = true;
+                }
+                else{
+                    pwd2.nextElementSibling.innerHTML = '密码不相同';
+                    pwd2.nextElementSibling.style.color = 'red';
+                    pwd2.style.outlineColor = 'red';
+                }
+            }
+
+            //检查邮箱栏
+            function check_email() {
+                if(email.value.indexOf('@')!=-1){
+                    email.nextElementSibling.innerHTML = '邮箱可用';
+                    email.nextElementSibling.style.color = 'aqua';
+                    email.style.outlineColor = 'aqua';
+                    email_is_usable = true;
+                }
+                else{
+                    email.nextElementSibling.innerHTML = '邮箱不可用';
+                    email.nextElementSibling.style.color = 'red';
+                    email.style.outlineColor = 'red';
+                }
+            }
+
+            //检查手机号码栏
+            function check_phone() {
+                if(p_num.value.length == 11){
+                    p_num.nextElementSibling.innerHTML = '手机号可用';
+                    p_num.nextElementSibling.style.color = 'aqua';
+                    p_num.style.outlineColor = 'aqua';
+                    phone_is_usable = true;
+                }
+                else{
+                    p_num.nextElementSibling.innerHTML = '手机号不可用';
+                    p_num.nextElementSibling.style.color = 'red';
+                    p_num.style.outlineColor = 'red';
+                }
+            }
+
+            verify.onclick = function () {
+                if(name_is_usable && pwd_is_usable && email_is_usable && phone_is_usable){
+                    alert('验证成功！');
+                }
+                else {
+                    alert('验证失败！')
+                    for (var i = 0; i < inputs.length - 1; i++) {
+                        (function (i) {
+                            inputs[i].nextElementSibling.style.display = 'block';
+                            inputs[i].nextElementSibling.nextElementSibling.style.display = 'none';
+                        })(i);
+                    }
+                    check_name();
+                    check_pwd();
+                    check_pwd_again();
+                    check_email();
+                    check_phone();
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

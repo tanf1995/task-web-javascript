@@ -94,12 +94,12 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “开始飞行” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “开始飞行” 成功';
                         command_info.appendChild(node);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “开始飞行” 失败';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “开始飞行” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1100)
@@ -114,12 +114,12 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “停止飞行” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “停止飞行” 成功';
                         command_info.appendChild(node);
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “停止飞行” 失败';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “停止飞行” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1000);
@@ -136,7 +136,7 @@ control_btn.onmouseover = function () {
                     var res = airship_list[i].get_command(data);
                     if(res){
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index + parseInt(1) + '号飞船接受命令 “销毁飞船” 成功';
+                        node.innerHTML = parseInt(airship_list[i].index) + parseInt(1) + '号飞船接受命令 “销毁飞船” 成功';
                         command_info.appendChild(node);
 
                         var pos = airship_list[i].pos;
@@ -149,7 +149,7 @@ control_btn.onmouseover = function () {
                     }
                     else {
                         node = document.createElement('p');
-                        node.innerHTML = airship_list[i].index+parseInt(1) + '号飞船接受命令 “销毁飞船” 失败';
+                        node.innerHTML = parseInt(airship_list[i].index)+parseInt(1) + '号飞船接受命令 “销毁飞船” 失败';
                         command_info.appendChild(node);
                     }
                 }, 1000);

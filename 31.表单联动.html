@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单联动</title>
+    <style>
+        body{
+            padding: 0 200px;
+        }
+
+        .type{
+            display: flex;
+            justify-content: flex-start;
+            font-size: 20px;
+        }
+
+        .type label{
+            width: 200px;
+        }
+
+        .school{
+            margin-top: 50px;
+        }
+
+        .school select{
+            width: 230px;
+            height: 30px;
+            font-size: 20px;
+            margin-right: 50px;
+        }
+
+        .company{
+            margin-top: 50px;
+            display: none;
+        }
+
+        .company input{
+            width: 500px;
+            height: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="type">
+        <label><input type="radio" name="student_type" value="1" checked> 在校生</label>
+        <label><input type="radio" name="student_type" value="2"> 非在校生</label>
+    </div>
+
+    <div class="school">
+        <label>学校 </label>
+        <select name="province" id="province">
+            <option value="1">四川</option>
+            <option value="2">江西</option>
+        </select>
+
+        <select name="school" id="schools">
+            <option>四川大学</option>
+            <option>成都理工大学</option>
+        </select>
+    </div>
+
+    <div class="company">
+        <label>就业单位 </label>
+        <input type="text">
+    </div>
+
+
+    <script>
+        window.onload = function () {
+            var type = document.getElementsByClassName('type')[0].getElementsByTagName('input');
+            var school = document.getElementsByClassName('school')[0];
+            var province = document.getElementById('province');
+            var school_names = document.getElementById('schools');
+            var company = document.getElementsByClassName('company')[0];
+
+            var data = {
+                '2': ['南昌大学', '东华理工大学'],
+                '1': ['四川大学', '成都理工大学']
+            };
+
+            type[0].onclick = function () {
+                school.style.display = 'block';
+                company.style.display = 'none'
+            };
+
+            type[1].onclick = function () {
+                company.style.display = 'block';
+                school.style.display = 'none';
+            };
+
+            province.onchange = function () {
+                // 获取下拉框选中的option的value
+                var selectedOption = province.options[province.selectedIndex].value;
+                var school_list = data[selectedOption];
+                var school = "";
+
+                for(var i=0;i<school_list.length;i++){
+                    school += '<option>' + school_list[i] + '</option>';
+                }
+                console.log(school);
+                school_names.innerHTML = school;
+            }
+        }
+    </script>
+</body>
+</html>

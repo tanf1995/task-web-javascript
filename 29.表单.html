@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <style>
+        body{
+            font-size: 30px;
+            line-height: 50px;
+        }
+
+        .content{
+            height: 50px;
+            width: 250px;
+            font-size: 30px;
+            line-height: 50px;
+            padding: 0;
+        }
+
+        .verify{
+            width: 60px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        p{
+            font-size: 16px;
+            margin-left: 100px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <label>名称： </label>
+    <input type="text" class="content">
+    <input type="submit" value="验证" class="verify">
+    <p>必填，长度为6~16个字符</p>
+
+    <script>
+        var verify = document.getElementsByClassName('verify')[0];
+        var info = document.getElementsByTagName('p')[0];
+
+        verify.onclick = function () {
+            var content = document.getElementsByClassName('content')[0];
+            var len = 0;
+            for(var i=0;i<content.value.length;i++){
+                if(content.value.charCodeAt(i) > 255){ // unicode字符，汉字大于255
+                    len += 2;
+                }
+                else {
+                    len += 1;
+                }
+            }
+
+            if(len>=6 && len<=16){
+                info.innerHTML = '名称格式正确';
+                info.style.color = 'aqua';
+                content.style.outlineColor = 'aqua';
+            }
+            else if(len==0){
+                info.innerHTML = '姓名不能为空';
+                info.style.color = 'red';
+                content.style.outlineColor = 'red';
+                content.focus();  // input聚焦
+            }
+            else {
+                info.innerHTML = '名称格式不正确';
+                info.style.color = 'red';
+                content.style.outlineColor = 'red';
+                content.focus();
+            }
+        }
+    </script>
+</body>
+</html>
