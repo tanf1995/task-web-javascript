@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+body{
+    font-family: SimHei;
+}
+
+.main{
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+    margin: 50px auto 0;
+    position: relative;
+}
+
+ul li{
+    list-style: none;
+    width: 49px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.top_list{
+    position: absolute;
+    top: -50px;
+}
+
+.top_list li{
+    float: left;
+}
+
+.left_list{
+    position: absolute;
+    left: -50px;
+}
+
+table{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+table td{
+    width: 49px;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+}
+
+.main .actor{
+    width: 50px;
+    height: 50px;
+    background:linear-gradient(#e7504e 75%, blue 100%);
+    background-position-y: 10px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    transform: rotate(0deg);
+}
+
+.control{
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+.control #command{
+    font-size: 20px;
+    line-height: 30px;
+    padding: 0;
+    background-color: #000;
+    color: aqua;
+    outline: none;
+}
+
+.control #enter, .control #refresh{
+    width: 60px;
+    height: 30px;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+}
+
+.control ul{
+    position: absolute;
+    top: 0;
+    left: -49px;
+    background-color: #bbb;
+    width: 50px;
+    height: 362px;
+}
+
+.control ul li{
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
+    color: #fff;
+ }
+
+.control ul .error{
+    background-color: #e7504e;
+    border-radius: 50%;
+}
+
+.reminder{
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+.reminder ul li{
+    width: 300px;
+    height: 40px;
+    text-align: left;
+    font-size: 22px;
+    line-height: 40px;
+}
+
+.reminder ul li:last-child{
+    font-size: 16px;
+    color: #aaa;
+}
