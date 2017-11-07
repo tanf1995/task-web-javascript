@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮出层</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .surface{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+
+        .surface .box{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: auto;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .box h2{
+            height: 40px;
+            background-color: chocolate;
+            color: #fff;
+            line-height: 40px;
+            font-size: 22px;
+            text-indent: 1em;
+            cursor: move;
+        }
+
+        .box p{
+            line-height: 40px;
+            margin: 0 20px;
+        }
+
+        .box input{
+            position: absolute;
+            width: 120px;
+            height: 40px;
+            bottom: 10px;
+            background-color: chocolate;
+            outline: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .box #sure{
+            right: 160px;
+        }
+
+        .box #cancel{
+            right: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <input type="submit" value="点击出现浮出层" id="show">
+    <div class="surface">
+        <div class="box">
+            <h2 class="title">这是一个浮出层</h2>
+            <p>这是浮出层<br>第二行<br>第三行</p>
+            <!--<a href="http://baidu.com">百度</a>-->
+            <input type="submit" value="确定" id="sure">
+            <input type="submit" value="取消" id="cancel">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var show_btn = document.getElementById('show');
+            var surface = document.getElementsByClassName('surface')[0];
+            var box = surface.getElementsByClassName('box')[0];
+            var title = box.getElementsByTagName('h2')[0];
+            var sure_btn = document.getElementById('sure');
+            var cancel_btn = document.getElementById('cancel');
+
+            show_btn.onclick = show_surface;
+            surface.onclick = hide_surface;
+            sure_btn.onclick = hide_surface;
+            cancel_btn.onclick = hide_surface;
+            box.onclick = stop_tran;
+            title.onmousedown = function () {
+                drag(event, box);
+            };
+            show_btn.onmousedown = function () {
+                drag(event, show_btn);
+            };
+
+
+            //浮出层出现接口
+            function show_surface() {
+                surface.style.display = 'flex';
+            }
+
+            //浮出层隐藏接口
+            function hide_surface() {
+                surface.style.display = 'none';
+                box.style.top = 0;
+                box.style.left = 0;
+            }
+
+            //阻止事件冒泡
+            function stop_tran(ev) {
+                //阻止事件冒泡
+                ev.stopPropagation();
+                //阻止默认行为发生
+//                ev.preventDefault();
+            }
+            
+            //拖拽效果
+            function drag(ev, box) {
+                var x_pos = ev.clientX;
+                var y_pos = ev.clientY;
+                var elem_top = parseInt(box.style.top);
+                var elem_left = parseInt(box.style.left);
+
+                box.style.position = 'relative';
+
+                if(isNaN(elem_top) || isNaN(elem_left)){
+                    elem_top = 0;
+                    elem_left = 0;
+                }
+
+                this.onmousemove = function (ev) {
+                    var new_x = ev.clientX;
+                    var new_y = ev.clientY;
+                    var x_change = new_x - x_pos;
+                    var y_change = new_y - y_pos;
+
+                    box.style.top = elem_top + y_change + 'px';
+                    box.style.left = elem_left + x_change + 'px';
+                };
+
+                this.onmouseup = function (ev) {
+                    this.onmousemove = null;
+                    ev.preventDefault();
+                };
+            }
+        }
+    </script>
+</body>
+</html>
