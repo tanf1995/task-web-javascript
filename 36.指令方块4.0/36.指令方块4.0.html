@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令方块</title>
+    <link rel="stylesheet" href="css/mysetyle.css">
+</head>
+<body>
+    <div class="reminder">
+        <ul>
+            <li>GO--前进一步</li>
+            <li>TUN LEF--向左转</li>
+            <li>TUN RIG--向右转</li>
+            <li>TUN BAC--向后转</li>
+            <li>TRA LEF--向左走</li>
+            <li>TRA TOP--向上走</li>
+            <li>TRA RIG--向右走</li>
+            <li>TRA BOT--向下走</li>
+            <li>MOV LEF--转左并走</li>
+            <li>MOV TOP--转上并走</li>
+            <li>MOV RIG--转右并走</li>
+            <li>MOV BOT--转下并走</li>
+            <li>BUILD--前方修墙</li>
+            <li>BRU color--粉刷墙<span>(十六进制颜色)</span></li>
+            <li>（不区分大小写）</li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <ul class="top_list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+
+        <table cellspacing="0">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <ul class="left_list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+
+        <div class="actor"></div>
+    </div>
+
+    <div class="control">
+        <textarea rows="12" cols="30" id="command"></textarea><br><br>
+        <input type="submit" value="执行" id="enter">
+        <input type="submit" value="清除命令" id="refresh">
+        <input type="submit" value="修建墙" id="build_wall">
+        <ul>
+            <!--<li class="active">1</li>-->
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="js/command.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
