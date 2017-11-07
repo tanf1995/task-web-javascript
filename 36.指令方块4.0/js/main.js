@@ -46,7 +46,7 @@ window.onload = function () {
             console.log(color);
 
             var reg1=/^#[0-9a-fA-F]{6}$/;
-            var reg2 = /^##[0-9a-fA-F]{3}$/;
+            var reg2 = /^#[0-9a-fA-F]{3}$/;
             if(!reg1.test(color) && !reg2.test(color)){
                 return false;
             }
