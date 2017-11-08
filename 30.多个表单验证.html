@@ -170,7 +170,7 @@
                 if(pwd2.value==pwd && pwd2.value.length!=0){
                     pwd2.nextElementSibling.innerHTML = '密码可用';
                     pwd2.nextElementSibling.style.color = 'aqua';
-                    pwd2g.style.outlineColor = 'aqua';
+                    pwd2.style.outlineColor = 'aqua';
                     pwd_is_usable = true;
                 }
                 else{
@@ -221,7 +221,7 @@
                     alert('验证成功！');
                 }
                 else {
-                    alert('验证失败！')
+                    alert('验证失败！');
                     for (var i = 0; i < inputs.length - 1; i++) {
                         (function (i) {
                             inputs[i].nextElementSibling.style.display = 'block';
