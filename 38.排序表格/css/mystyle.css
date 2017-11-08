@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+body{
+    font-family: SimHei;
+}
+
+table{
+    margin: 20px auto 0;
+}
+
+table td{
+    width: 150px;
+    height: 40px;
+    border-color: #eee;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+}
+
+table tr:first-child{
+    background-color: #000;
+    color: #fff;
+}
+
+
+table tr:first-child span{
+    display: inline-block;
+    width: 28px;
+    height: 14px;
+    overflow: hidden;
+    position: absolute;
+}
+
+table tr:first-child td span:first-child{
+    top: 3px;
+}
+
+table tr:first-child td span:last-child{
+    bottom: 3px;
+}
+
+table tr:first-child td span input{
+    width: 16px;
+    height: 14px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    display: block;
+    margin-top: 7px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+table tr:first-child td span:last-child input{
+    margin-top: -7px;
+}
