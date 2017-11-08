@@ -23,8 +23,30 @@ function Table(elem) {
     //冻结行首
     a.freeze = function () {
         //非ie浏览器
-        window.addEventListener("scroll", function () {
-            if(document.body.scrollTop>elem.offsetTop && document.body.scrollTop<parseInt(elem.offsetTop)+parseInt(elem.clientHeight)){
+        // document.addEventListener("scroll", function () {
+        //     console.log(document.body.scrollTop);
+        //     console.log(document.documentElement.scrollTop);
+        //     // console.log(elem.offsetTop);
+        //     // console.log(elem.clientHeight);
+        //     if(document.body.scrollTop>elem.offsetTop && document.body.scrollTop<parseInt(elem.offsetTop)+parseInt(elem.clientHeight)){
+        //         console.log('ss');
+        //         a.place_holder.style.display = 'table-row';
+        //         a.first_tr.style.position = 'fixed';
+        //         a.first_tr.style.top = 0;
+        //     }
+        //
+        //     else{
+        //         a.place_holder.style.display = 'none';
+        //         a.first_tr.style.position = 'static';
+        //     }
+        // });
+
+        //谷歌浏览器
+        document.addEventListener("scroll", function () {
+            console.log(document.body.scrollTop);
+            console.log(document.documentElement.scrollTop);
+            if(document.documentElement.scrollTop>elem.offsetTop && document.documentElement.scrollTop<parseInt(elem.offsetTop)+parseInt(elem.clientHeight)){
+                console.log('ss');
                 a.place_holder.style.display = 'table-row';
                 a.first_tr.style.position = 'fixed';
                 a.first_tr.style.top = 0;
