@@ -156,14 +156,14 @@ $(function () {
         var is_find_current_day = false;
         $td.each(function (i) {
             $td.eq(i).text(date_list[i]).removeClass('disable').removeClass('current');
-            if(date_list[i]==current_day && !is_find_current_day){
-                $td.eq(i).addClass('current').siblings();
-                is_find_current_day = true;
-            }
             if(i<first_day_week || i>first_day_week+current_month_days-1){
                 $td.eq(i).addClass('disable').siblings();
             }
 
+            if(date_list[i]==current_day && !is_find_current_day && !$td.eq(i).hasClass('disable')){
+                $td.eq(i).addClass('current').siblings();
+                is_find_current_day = true;
+            }
         });
     }
 
