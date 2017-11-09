@@ -3,6 +3,7 @@ $(function () {
     var current_year = current_time.getFullYear(); //当前年份
     var current_month = current_time.getMonth();  //当前月份
     var current_day = current_time.getDate();  //当前号数
+    var $calender = $('.calendar');
     var $td = $('.calendar .content tr:gt(0) td');
     var $select_year = $('#select_year');
     var $select_month = $('#select_month');
@@ -11,6 +12,19 @@ $(function () {
     var $next = $('.next');
 
     reset();
+
+    //时间框获取焦点时显示日历
+    $date.focus(function () {
+        $calender.slideDown();
+    });
+
+    $('body').click(function () {
+        $calender.slideUp();
+    });
+
+    $('.main').click(function () {
+        return false;
+    });
 
     //点击选中日期
     $td.each(function (i) {
@@ -48,6 +62,8 @@ $(function () {
             $select_month.find("option[value=" + String(current_month+1) + "]").attr("selected",true);
             fill_data(current_day, current_year, current_month);
             show_select_date();
+            $calender.slideUp();
+            return false;
         });
     });
 
