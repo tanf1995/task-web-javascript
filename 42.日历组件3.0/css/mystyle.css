@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.main{
+    width: 400px;
+    margin: 20px auto 0;
+    font-family: SimHei;
+}
+
+.calendar{
+    display: none;
+}
+
+#date{
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    text-indent: 10px;
+}
+
+.header{
+    width: 222px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #e7504e;
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.header select{
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    background-color: #e7504e;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.header .previous, .header .next{
+    width: 10px;
+    height: 24px;
+    position: absolute;
+    top: 7px;
+    cursor: pointer;
+    overflow-x: hidden;
+}
+
+.header .previous p, .header .next p{
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    transform: rotate(45deg);
+    position: relative;
+    left: 5px;
+}
+
+.header .next p{
+    left: -10px;
+}
+
+.header .previous{
+    left: 10px;
+}
+
+.header .next{
+    right: 10px;
+}
+
+.calendar .content{
+    padding: 5px;
+    box-shadow: 0 0 10px #eee;
+    border-color: #eee;
+}
+
+.calendar .content td{
+    width: 30px;
+    height: 30px;
+    border: none;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar .content tr:first-child td{
+    cursor: default;
+}
+
+.calendar .content tr td:nth-child(6n+1){
+    color: #e7504e;
+}
+
+.calendar .content tr .current{
+    background-color: #e7504e !important;
+    color: #fff !important;
+}
+
+.calendar .content tr .disable{
+    color: #eee !important;
+}
+
+.calendar .content tr .prepare{
+    background-color: #00a0fc !important;
+    color: #fff !important;
+}
