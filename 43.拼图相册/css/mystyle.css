@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+.btns{
+    width: 200px;
+    float: left;
+}
+
+.btns input{
+    width: 150px;
+    height: 30px;
+    display: block;
+    margin: 30px 20px;
+}
+
+.main{
+    width: 1000px;
+    height: 600px;
+    margin: 30px 0 0 220px;
+}
+
+.main .photo_album{
+    width: 1000px;
+    height: 600px;
+    position: relative;
+}
+
+.main .photo_album img{
+    cursor: zoom-in;
+}
+
+.show_pic{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    cursor: zoom-out;
+}
+
+.show_pic img{
+    margin: auto;
+    cursor: default;
+    display: none;
+}
