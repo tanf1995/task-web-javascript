@@ -1,23 +1,22 @@
 window.onload = function () {
     var $main_box = $('.main');
+    var $show_pic = $('.show_pic');
     var photos = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/4.jpg', 'images/5.jpg', 'images/6.jpg', 'images/7.jpg', 'images/8.jpg', 'images/9.jpg', 'images/10.jpg'];
-    var fallWalter = FallWalter($main_box, 4);
+    var fallWalter = FallWalter($main_box, 4, $show_pic);
 
     $main_box.css({width: $('body').width()});
     fallWalter.reset(photos);
     fallWalter.pushImg(photos);
 
+    //滚动条滑到底部时继续加载图片
     $(window).scroll(function () {
-        // console.log($(this).scrollTop());
-        // console.log($(this).height());
-        // console.log($(document).height());
         if($(this).scrollTop()>= $(document).height()-$(this).height()-10){
             fallWalter.pushImg(photos);
         }
     });
 };
 
-function FallWalter($main_box, col_num) {
+function FallWalter($main_box, col_num, show_box) {
     var f = new Object();
 
     f.main_box = $main_box;  //总容器
@@ -25,6 +24,7 @@ function FallWalter($main_box, col_num) {
     f.col_num = col_num;  //列数
     f.col_width = Math.floor((f.main_box.width()-15*(f.col_num+1))/f.col_num); //每列宽度
     f.col_height_li = [];
+    f.show_box = show_box;
 
     //初始化最上层
     f.reset = function (photos) {
@@ -50,6 +50,7 @@ function FallWalter($main_box, col_num) {
             time += 1;
             if(time==10){
                 clearInterval(timer);
+                f.show_pic(f.show_box);
             }
         }, 200);
     };
@@ -66,6 +67,31 @@ function FallWalter($main_box, col_num) {
         $img.get(0).onload = function () {
             f.col_height_li[i] += this.height;
         };
+    };
+
+    //点击放大图片
+    f.show_pic = function (show_box) {
+        var $imgs = f.main_box.children('ul').children('li').children('img');
+
+        $imgs.each(function () {
+            $(this).click(function () {
+                show_box.css({display: 'flex'});
+                console.log( $(this).attr('src'));
+                show_box.children('img').attr('src', $(this).attr('src'));
+                show_box.children('img').slideDown();
+
+                return false;
+            });
+        });
+
+        show_box.click(function () {
+            show_box.children('img').slideUp();
+            show_box.css({display: 'none'});
+        });
+
+        show_box.children('img').click(function () {
+            return false;
+        });
     };
 
     return f;

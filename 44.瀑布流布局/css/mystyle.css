@@ -22,4 +22,23 @@ ul li{
 
 .main .img_box li img{
     width: 100%;
+    cursor: zoom-in;
+}
+
+.show_pic{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    cursor: zoom-out;
+}
+
+.show_pic img{
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto;
+    display: none;
+    cursor: default;
 }
