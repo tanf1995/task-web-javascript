@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding:0;
+}
+
+ul li{
+    list-style: none;
+}
+
+.main .img_box{
+    float: left;
+    margin-left:15px;
+}
+
+.main .img_box li{
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #000;
+}
+
+.main .img_box li img{
+    width: 100%;
+}
