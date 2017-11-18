@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打方块</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+
+        #game{
+            margin-left: 300px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="game" width="640" height="600">你的浏览器不支持canvas</canvas>
+
+    <script>
+        var racket_width = 100;  //球拍宽高
+        var racket_height = 10;
+        var racket_pos_user = 40;  //球拍距左边位置
+        var racket_pos_computer = 40;  //球拍距左边位置
+        var boll_size = 6;  //球的大小
+        var boll_x = boll_y = 50;  //球的位置
+        var score_user = score_computer = 0;  //双方分数
+        var boll_move_distanceX = 4;  //球移动的速度
+        var boll_move_distanceY = 4;
+        var ais = 4;  //电脑球拍移动速度
+
+        window.onload = function () {
+            game = document.getElementById('game');
+            game_screen = game.getContext('2d');
+            setInterval(update, 1000/30);
+            game.addEventListener('mousemove', function (e) {
+                racket_pos_user = e.clientX - racket_width/2 - game.offsetLeft;  //控制球拍
+            })
+        };
+
+        function reset() {
+            boll_x = game.width/2;
+            boll_y = game.height/2;
+            boll_move_distanceX = 4;
+        }
+
+        function update() {
+            boll_x += boll_move_distanceX;
+            boll_y += boll_move_distanceY;  //球移动
+
+            //电脑球拍移动
+            if(racket_pos_computer+racket_width/2 > boll_x){
+                racket_pos_computer -= ais;
+            }
+            else {
+                racket_pos_computer += ais;
+            }
+
+            if(boll_x < 0 && boll_move_distanceX<0){
+                boll_move_distanceX = -boll_move_distanceX;  //当球碰到左壁时改变方向
+            }
+            if(boll_x > game.width && boll_move_distanceX>0){
+                boll_move_distanceX = -boll_move_distanceX;  //当球碰到右壁时改变方向
+            }
+            //当球碰到上方时
+            if(boll_y < 0 && boll_move_distanceY<0){
+                if(boll_x>racket_pos_computer && boll_x<racket_pos_computer+racket_width){
+                    boll_move_distanceY = -boll_move_distanceY;
+                    boll_move_distanceX = (boll_x - racket_pos_computer - racket_width/2)*0.3;
+                }
+                else {
+                    score_user ++;
+                    reset();
+                }
+            }
+            //当球碰到下方时
+            if(boll_y > game.height && boll_move_distanceY>0){
+                if(boll_x>racket_pos_user && boll_x<racket_pos_user+racket_width){
+                    boll_move_distanceY = -boll_move_distanceY;
+                    boll_move_distanceX = (boll_x - racket_pos_user - racket_width/2)*0.3;
+                }
+                else {
+                    boll_move_distanceY = -boll_move_distanceY;
+                    score_computer++;
+                    reset();
+                }
+            }
+
+
+            game_screen.fillStyle = 'black';
+            game_screen.fillRect(0, 0, game.width, game.height);
+            game_screen.fillStyle = 'white';
+            game_screen.fillRect(racket_pos_user, game.height-racket_height ,racket_width, racket_height);
+            game_screen.fillRect(racket_pos_computer, 0 ,racket_width, racket_height);
+            game_screen.fillRect(boll_x-boll_size/2, boll_y-boll_size/2, boll_size, boll_size);
+            game_screen.fillText(score_computer, 30, 100);
+            game_screen.fillText(score_user, 30, game.height-100);
+        }
+    </script>
+</body>
+</html>
